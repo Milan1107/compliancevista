@@ -251,9 +251,9 @@ const Navbar = () => {
               <AnimatePresence>
                 {isResourcesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 1, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
+                    exit={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
                     className={`absolute top-full right-0 mt-2 w-48 rounded-xl shadow-lg border overflow-hidden z-50 transition-all ${
                       scrolled && isOverColoredSection

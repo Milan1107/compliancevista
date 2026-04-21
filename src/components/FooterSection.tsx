@@ -59,11 +59,6 @@ const FooterSection = () => {
               <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                 <li>
-                  <button onClick={() => navigateToSection('home')} aria-label="Navigate to Home section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0">
-                    Home
-                  </button>
-                </li>
-                <li>
                   <button onClick={() => navigateToSection('overview')} aria-label="Navigate to Overview section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0">
                     Overview
                   </button>
@@ -87,6 +82,11 @@ const FooterSection = () => {
                   <button onClick={() => navigateToSection('contact')} aria-label="Navigate to Contact Us section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0">
                     Contact Us
                   </button>
+                </li>
+                <li>
+                  <a href="https://resources.surveyvista.com/knowledge-base/compliancevista/user-guide" target="_blank" rel="noopener noreferrer" aria-label="Open User Guide resources" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
+                    Resources
+                  </a>
                 </li>
               </ul>
             </div>

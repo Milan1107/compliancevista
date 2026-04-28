@@ -200,7 +200,12 @@ const ContactSection = () => {
 
               <div className="space-y-3 sm:space-y-5">
                 {/* Address */}
-                <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=2040+Martin+Ave,+Santa+Clara,+CA+95050,+United+States"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
@@ -208,26 +213,35 @@ const ContactSection = () => {
                     <p className="font-bold text-foreground">2040 Martin Ave, Santa Clara, CA</p>
                     <p className="text-muted-foreground">95050 United States</p>
                   </div>
-                </div>
+                </a>
 
                 {/* Phone */}
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300">
+                <a
+                  href="tel:+16697776838"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-sm font-bold text-foreground">1.669.777.6838</span>
-                </div>
+                </a>
 
                 {/* Email */}
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300">
+                <a
+                  href="mailto:info@ardira.com"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-sm font-bold text-foreground">info@ardira.com</span>
-                </div>
+                </a>
 
                 {/* Support Note */}
-                <div className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300">
+                <a
+                  href="mailto:support@ardira.com"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
                     <span className="text-sm font-bold text-primary">?</span>
                   </div>
@@ -235,7 +249,7 @@ const ContactSection = () => {
                     <p className="text-muted-foreground">For customer support, email us directly at</p>
                     <p><span className="text-foreground font-bold">support@ardira.com</span></p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 

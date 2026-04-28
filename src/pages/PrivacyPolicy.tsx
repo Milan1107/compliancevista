@@ -50,7 +50,7 @@ const PrivacyPolicy = () => {
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">This Policy Describes:</h2>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground text-sm md:text-base">
-                  <li>The types of information we collect from you or that you may provide when you visit our website available at: compliancevista.com ("our Website")</li>
+                  <li>The types of information we collect from you or that you may provide when you visit our website available at: <a href="https://compliance-quest-page.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">compliancevista.com</a> ("our Website")</li>
                   <li>Our practices for collecting, using, maintaining, protecting, and disclosing that information</li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed mt-4">

@@ -16,7 +16,7 @@ const FooterSection = () => {
   };
 
   return (
-  <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-0">
+  <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-1">
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
     <div className="container relative pb-0">
@@ -102,7 +102,13 @@ const FooterSection = () => {
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                 <li className="flex items-start gap-2">
                   <span className="shrink-0 pt-[2px]" aria-hidden="true">🌐</span>
-                  <a href="https://compliance-quest-page.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Compliance Vista main website" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all">
+                  <a 
+                    href="https://compliance-quest-page.vercel.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Visit www.compliancevista.com" 
+                    className="text-navy-foreground/80 hover:text-primary transition-colors duration-300"
+                  >
                     www.compliancevista.com
                   </a>
                 </li>
@@ -114,7 +120,7 @@ const FooterSection = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="shrink-0 pt-[2px]" aria-hidden="true">📱</span>
-                  <a href="tel:1.669.777.6838" aria-label="Call support at 1.669.777.6838" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
+                  <a href="tel:+16697776838" aria-label="Call us at 1.669.777.6838" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
                     1.669.777.6838
                   </a>
                 </li>

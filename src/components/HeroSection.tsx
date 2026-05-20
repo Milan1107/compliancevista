@@ -1,11 +1,9 @@
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import GetNowModal from "./GetNowModal";
 import CalendlyModal from "./CalendlyModal";
 
 const HeroSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const scrollTo = (id: string) => {
@@ -72,17 +70,22 @@ const HeroSection = () => {
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={() => setIsCalendlyOpen(true)}
-                  className="group relative bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 text-center text-sm sm:text-base"
+                  className="group relative bg-[#37C643] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-lg hover:shadow-[#37C643]/40 transition-all duration-300 hover:-translate-y-1 text-center text-sm sm:text-base"
                 >
                   <span className="relative z-10">Book a Demo</span>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-[#37C643] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </button>
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="glass px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-foreground overflow-hidden shadow-xl hover:bg-white/80 hover:shadow-lg hover:shadow-white/30 transition-all duration-300 hover:-translate-y-1 text-center text-sm sm:text-base"
+                <a
+                  href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N4V00000J6DYBUA3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative border-2 border-[#37C643] text-[#37C643] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-sm hover:shadow-md hover:shadow-[#37C643]/20 transition-all duration-300 hover:-translate-y-1 text-center text-sm sm:text-base bg-white hover:bg-[#37C643]/5 flex items-center justify-center gap-2"
                 >
-                  View On AppExchange →
-                </button>
+                  <span className="relative z-10">View On AppExchange</span>
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6l6 6m0 0l-6 6m6-6H3" />
+                  </svg>
+                </a>
               </div>
 
               <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
@@ -152,7 +155,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <GetNowModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <CalendlyModal isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
     </section>
   );

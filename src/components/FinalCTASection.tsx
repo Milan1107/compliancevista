@@ -19,7 +19,7 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="final-cta" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gradient-to-r from-[#37C643] via-[#2ea82e] to-[#37C643]">
+    <section ref={sectionRef} id="final-cta" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-[#37C643]">
       {/* Single animated orb - subtle effect */}
       <motion.div
         className="absolute bottom-20 right-[15%] w-80 h-80 bg-white/5 rounded-full blur-3xl"

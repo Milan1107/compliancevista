@@ -11,7 +11,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[85dvh] md:min-h-[100dvh] pt-24 md:pt-0 flex items-center overflow-hidden mesh-bg">
+    <section id="home" className="relative min-h-[85dvh] md:min-h-[100dvh] pt-24 md:pt-0 flex items-center overflow-hidden bg-gradient-to-br from-white via-[#37C643]/5 to-[#37C643]/8">
+      {/* Subtle greenish background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#37C643]/3 to-[#37C643]/4" />
+      
       {/* Floating orbs */}
       <div className="absolute top-20 right-[15%] w-72 h-72 bg-primary/10 rounded-full blur-3xl float-animation" />
       <div className="absolute bottom-20 left-[10%] w-96 h-96 bg-secondary/8 rounded-full blur-3xl float-animation" style={{ animationDelay: "3s" }} />

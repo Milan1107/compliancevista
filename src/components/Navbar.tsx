@@ -13,17 +13,6 @@ const navLinks = [
   { label: "Contact Us", href: "#contact" },
 ];
 
-const resourcesLinks = [
-  {
-    label: "Installation Guide",
-    href: "https://resources.surveyvista.com/knowledge-base/compliancevista/installation-guide",
-  },
-  {
-    label: "User Guide",
-    href: "https://resources.surveyvista.com/knowledge-base/compliancevista/user-guide",
-  },
-];
-
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,7 +21,6 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isOverColoredSection, setIsOverColoredSection] = useState(false);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Determine if we're on an independent page (not the home page)
@@ -224,71 +212,6 @@ const Navbar = () => {
                 )}
               </button>
             ))}
-
-            {/* Resources Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                aria-label="Resources menu"
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-1 ${
-                  !scrolled
-                    ? "text-slate-800 hover:text-slate-900 hover:bg-slate-800/5"
-                    : isOverColoredSection
-                    ? "text-white hover:text-white hover:bg-white/10"
-                    : "text-foreground hover:text-foreground hover:bg-primary/5"
-                }`}
-              >
-                Resources
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-300 ${
-                    isResourcesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {isResourcesOpen && (
-                  <motion.div
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`absolute top-full right-0 mt-2 w-48 rounded-xl shadow-lg border overflow-hidden z-50 transition-all ${
-                      scrolled && isOverColoredSection
-                        ? "bg-slate-800/90 border-slate-600/50"
-                        : "bg-white/90 border-white/40"
-                    }`}
-                  >
-                    {resourcesLinks.map((link, index) => (
-                      <a
-                        key={index}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`block px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                          scrolled && isOverColoredSection
-                            ? "text-white/80 hover:text-white hover:bg-white/10"
-                            : "text-foreground/80 hover:text-primary hover:bg-primary/5"
-                        }`}
-                        onClick={() => setIsResourcesOpen(false)}
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Click outside to close dropdown */}
-              {isResourcesOpen && (
-                <div
-                  className="fixed inset-0 z-40"
-                  onClick={() => setIsResourcesOpen(false)}
-                />
-              )}
-            </div>
 
             <button
               onClick={() => setIsCalendlyOpen(true)}

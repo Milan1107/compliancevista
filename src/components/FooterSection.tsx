@@ -131,7 +131,7 @@ const FooterSection = () => {
 
         <div className="border-t border-navy-foreground/10 py-3 flex flex-col gap-2 sm:gap-3 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-navy-foreground/60 order-2 md:order-1">
-            © {currentYear} ComplianceVista. All Rights Reserved.
+            © 2026 Ardira Corporation. All Rights Reserved.
           </p>
           <div className="flex gap-4 sm:gap-6 text-[10px] sm:text-xs order-1 md:order-2">
             <Link to="/terms-of-use" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">

@@ -19,7 +19,7 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="final-cta" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-[#37C643]">
+    <section ref={sectionRef} id="final-cta" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-[#26C64F]">
       {/* Single animated orb - subtle effect */}
       <motion.div
         className="absolute bottom-20 right-[15%] w-80 h-80 bg-white/5 rounded-full blur-3xl"
@@ -63,7 +63,7 @@ const FinalCTASection = () => {
             {/* Primary Button */}
             <motion.button
               onClick={() => setIsCalendlyOpen(true)}
-              className="group relative px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base overflow-hidden shadow-lg bg-white text-[#37C643] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base overflow-hidden shadow-lg bg-white text-[#26C64F] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >

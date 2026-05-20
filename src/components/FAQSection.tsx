@@ -38,8 +38,10 @@ const FAQSection = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
   return (
-    <section id="faq" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-white" />
+    <section id="faq" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30">
+      {/* Subtle decorations */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-100/20 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
@@ -49,13 +51,11 @@ const FAQSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
-                FAQ
-              </span>
-            </div>
+            <span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+              FAQ
+            </span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#37C643] px-4 mt-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 px-4 mt-4">
             Frequently Asked Questions
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">

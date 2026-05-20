@@ -56,11 +56,13 @@ const SolutionSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-white"
+      className="relative bg-gradient-to-br from-blue-50/40 via-white to-cyan-50/30"
       style={{ height: `${totalItems * 80}vh` }}
     >
-      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden bg-white">
-        {/* Clean white background */}
+      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-cyan-50/30">
+        {/* Subtle decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-100/20 rounded-full blur-3xl -z-10" />
 
         <div className="container relative px-4 sm:px-6">
           <motion.div
@@ -70,13 +72,11 @@ const SolutionSection = () => {
             className="text-center mb-12 md:mb-16"
           >
             <div className="inline-block mb-4">
-              <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-                <span className="text-xs md:text-sm font-semibold text-[#37C643]">
-                  Our Solution
-                </span>
-              </div>
+              <span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+                Our Solution
+              </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#37C643] px-4 mt-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900 px-4 mt-4">
               How Compliance Vista Solves This
             </h2>
             <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">

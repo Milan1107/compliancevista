@@ -54,10 +54,11 @@ const IconComponent = ({ iconType }: { iconType: string }) => {
 const ProblemSection = () => (
 	<section
 		id="overview"
-		className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white"
+		className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-red-50/50 via-white to-orange-50/30"
 	>
-		{/* Background - Clean white */}
-		<div className="absolute inset-0 bg-white" />
+		{/* Subtle accent decorations */}
+		<div className="absolute top-0 right-0 w-96 h-96 bg-red-100/20 rounded-full blur-3xl -z-10" />
+		<div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-100/20 rounded-full blur-3xl -z-10" />
 
 		<div className="container relative z-10 px-4 sm:px-6">
 			<motion.div
@@ -66,14 +67,10 @@ const ProblemSection = () => (
 				viewport={{ once: true }}
 				className="text-center mb-12 md:mb-16"
 			>
-				<div className="inline-block mb-4">
-					<div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-						<span className="text-xs md:text-sm font-semibold text-[#37C643]">
-							The Challenge
-						</span>
-					</div>
-				</div>
-				<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#37C643] px-4 mt-4">
+				<span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+					The Challenge
+				</span>
+				<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 px-4 mt-4">
 					Enterprise Compliance Challenges
 				</h2>
 				<p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">

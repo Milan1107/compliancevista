@@ -104,9 +104,10 @@ const FeaturesSection = () => {
 	};
 
 	return (
-		<section id="features" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
-			{/* Background elements */}
-			<div className="absolute inset-0 bg-white" />
+		<section id="features" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-white">
+			{/* Subtle accent decorations */}
+			<div className="absolute top-0 left-0 w-72 h-72 bg-green-100/30 rounded-full blur-3xl -z-10" />
+			<div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl -z-10" />
 
 			<div className="container relative z-10 px-4 sm:px-6">
 				{/* Section Header */}
@@ -118,13 +119,11 @@ const FeaturesSection = () => {
 					className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
 				>
 					<div className="inline-block">
-						<div className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-							<span className="text-xs md:text-sm font-semibold text-[#37C643]">
-								Powerful Capabilities
-							</span>
-						</div>
+						<span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+							Powerful Capabilities
+						</span>
 					</div>
-					<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 text-[#37C643] px-4 mt-4">
+					<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 text-slate-900 px-4 mt-4">
 						Enterprise Features
 					</h2>
 					<p className="text-sm md:text-base lg:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed px-4">

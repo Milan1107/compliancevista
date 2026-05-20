@@ -60,9 +60,10 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section id="benefits" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
-      {/* Background elements - Clean white background */}
-      <div className="absolute inset-0 bg-white" />
+    <section id="benefits" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-slate-50 to-white">
+      {/* Subtle accent decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#37C643]/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-100/10 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -73,14 +74,10 @@ const BenefitsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16 px-4"
         >
-          <div className="inline-block">
-            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
-                Why Choose Us
-              </span>
-            </div>
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-[#37C643] px-4 mt-4">
+          <span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+            Why Choose Us
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-slate-900 px-4 mt-4">
             Key Benefits
           </h2>
           <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4">

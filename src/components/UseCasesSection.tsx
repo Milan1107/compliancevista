@@ -58,9 +58,10 @@ const UseCasesSection = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-white" />
+    <section id="use-cases" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-white via-[#37C643]/2 to-slate-50">
+      {/* Subtle decorative elements */}
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-teal-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-green-50/40 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -71,14 +72,10 @@ const UseCasesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16 px-4"
         >
-          <div className="inline-block mb-4">
-            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
-              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
-                Real-World Applications
-              </span>
-            </div>
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-[#37C643] px-4">
+          <span className="text-xs md:text-sm font-semibold text-[#37C643] uppercase tracking-wider">
+            Real-World Applications
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-slate-900 px-4 mt-4">
             Perfect for Every Scenario
           </h2>
           <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4">

@@ -234,3 +234,6 @@ img, iframe, video {
 .grecaptcha-badge:hover {
   width: 256px !important;
 }
+.gradient-text { background: none !important; -webkit-text-fill-color: #37C643 !important; color: #37C643 !important; }
+button.bg-gradient-to-r, a.bg-gradient-to-r, .bg-gradient-to-r { background: #37C643 !important; }
+.mesh-bg, .bg-gradient-to-b, .bg-gradient-to-r, .bg-gradient-to-tr { background-image: none !important; background-color: #ffffff !important; } body { background-color: #F8FAFC !important; }

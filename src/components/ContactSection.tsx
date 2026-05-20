@@ -96,11 +96,11 @@ const ContactSection = () => {
   };
 
   const inputClass = (name: string) =>
-    `w-full rounded-xl border px-4 py-3 text-sm text-foreground bg-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary focus:bg-white/80 transition-all duration-300 ${errors[name] ? "border-destructive" : "border-border/50"
+    `w-full rounded-xl border px-4 py-3 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#37C643]/40 focus:border-[#37C643] transition-all duration-300 ${errors[name] ? "border-red-500" : "border-slate-200"
     }`;
 
   return (
-    <section id="contact" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
+    <section id="contact" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
       <style>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
@@ -110,27 +110,30 @@ const ContactSection = () => {
           display: none;
         }
       `}</style>
-      <div className="absolute inset-0 mesh-bg" />
+      <div className="absolute inset-0 bg-white" />
 
-      <div className="container relative px-4 sm:px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-10 md:mb-14"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-              <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
                 Contact
               </span>
             </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">Get in Touch</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#37C643] px-4 mt-4">Get in Touch</h2>
+          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">
+            Reach out to us and we'll respond as soon as possible
+          </p>
         </motion.div>
 
         {/* Two Column Layout - Form Left (Sticky), Info + Map Right (Fixed Height) */}
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 md:gap-10 max-w-6xl mx-auto items-start">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-start">
           {/* Form - Left Side - Sticky Position, Static Size */}
           <motion.form
             ref={formRef}
@@ -138,46 +141,46 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="md:sticky md:top-20 glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 space-y-3 sm:space-y-4 h-fit flex flex-col"
+            className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-5 h-fit flex flex-col shadow-sm hover:shadow-md transition-all duration-300 md:sticky md:top-20"
           >
             <div>
-              <label className="block text-[10px] sm:text-xs font-semibold text-foreground/70 mb-1 sm:mb-1.5 uppercase tracking-wider">Your Name <span className="text-destructive">*</span></label>
+              <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>
               <input type="text" value={form.name} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass("name")} placeholder="John Doe" />
-              {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+              {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
             </div>
 
             <div>
-              <label className="block text-[10px] sm:text-xs font-semibold text-foreground/70 mb-1 sm:mb-1.5 uppercase tracking-wider">Your Email <span className="text-destructive">*</span></label>
+              <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Email <span className="text-red-500">*</span></label>
               <input type="email" value={form.email} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass("email")} placeholder="john@company.com" />
-              {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
+              {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="block text-[10px] sm:text-xs font-semibold text-foreground/70 mb-1 sm:mb-1.5 uppercase tracking-wider">Phone <span className="text-destructive">*</span></label>
+              <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Phone <span className="text-red-500">*</span></label>
               <input type="tel" value={form.phone} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClass("phone")} placeholder="Enter your phone number" />
-              {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
+              {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
             </div>
 
             <div className="flex-grow">
-              <label className="block text-[10px] sm:text-xs font-semibold text-foreground/70 mb-1 sm:mb-1.5 uppercase tracking-wider">Your Message</label>
+              <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Message</label>
               <textarea value={form.message} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5} className={`${inputClass("message")} resize-none h-24 sm:h-32 md:h-40`} placeholder="Tell us about your compliance needs..." />
-              {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
+              {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 mt-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-xl text-sm sm:text-base"
+              className="w-full bg-[#37C643] text-white py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-md hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 mt-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md text-sm sm:text-base"
             >
               <Send className="w-4 h-4" />
               {isSubmitting ? "Submitting..." : "Send"}
             </button>
 
             {/* reCAPTCHA Badge Notice */}
-            <p className="text-xs text-muted-foreground text-center mt-4">
+            <p className="text-xs text-slate-500 text-center mt-4">
               This site is protected by reCAPTCHA and the Google
               <br />
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Terms of Service</a> apply.
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-[#37C643] transition-colors">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="hover:text-[#37C643] transition-colors">Terms of Service</a> apply.
             </p>
           </motion.form>
 
@@ -186,75 +189,75 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-6 md:overflow-y-auto overflow-hidden scrollbar-hide glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8"
+            className="flex flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-6 md:p-8 overflow-hidden scrollbar-hide shadow-sm hover:shadow-md transition-all duration-300"
             style={{ maxHeight: rightSideHeight }}
           >
             {/* Contact Info Box - TOP */}
             <div className="flex flex-col">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-4 sm:mb-6">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
                 Quick Contact
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 sm:mb-6">
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6">
                 Get in touch with a representative to see a demo or simply learn more about the product.
               </p>
 
-              <div className="space-y-3 sm:space-y-5">
+              <div className="space-y-3 md:space-y-4">
                 {/* Address */}
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=2040+Martin+Ave,+Santa+Clara,+CA+95050,+United+States"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                  className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
+                  <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-[#37C643]" />
                   </div>
                   <div className="text-sm leading-relaxed">
-                    <p className="font-bold text-foreground">2040 Martin Ave, Santa Clara, CA</p>
-                    <p className="text-muted-foreground">95050 United States</p>
+                    <p className="font-bold text-slate-900">2040 Martin Ave, Santa Clara, CA</p>
+                    <p className="text-slate-600">95050 United States</p>
                   </div>
                 </a>
 
                 {/* Phone */}
                 <a
                   href="tel:+16697776838"
-                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-primary" />
+                  <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-[#37C643]" />
                   </div>
-                  <span className="text-sm font-bold text-foreground">1.669.777.6838</span>
+                  <span className="text-sm font-bold text-slate-900">1.669.777.6838</span>
                 </a>
 
                 {/* Email */}
                 <a
                   href="mailto:info@ardira.com"
-                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
+                  <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-[#37C643]" />
                   </div>
-                  <span className="text-sm font-bold text-foreground">info@ardira.com</span>
+                  <span className="text-sm font-bold text-slate-900">info@ardira.com</span>
                 </a>
 
                 {/* Support Note */}
                 <a
                   href="mailto:support@ardira.com"
-                  className="flex items-center gap-4 p-4 rounded-lg bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 hover:border-primary/40 hover:bg-gradient-to-br hover:from-primary/8 hover:to-secondary/8 transition-all duration-300 cursor-pointer no-underline"
+                  className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-primary">?</span>
+                  <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-[#37C643]">?</span>
                   </div>
                   <div className="text-sm">
-                    <p className="text-muted-foreground">For customer support, email us directly at</p>
-                    <p><span className="text-foreground font-bold">support@ardira.com</span></p>
+                    <p className="text-slate-600">For customer support, email us directly at</p>
+                    <p><span className="text-slate-900 font-bold">support@ardira.com</span></p>
                   </div>
                 </a>
               </div>
             </div>
 
             {/* Google Maps - BOTTOM */}
-            <div className="rounded-xl overflow-hidden shadow-lg border border-primary/10 h-56 sm:h-64 md:h-80 w-full" style={{ minHeight: "224px" }}>
+            <div className="rounded-lg overflow-hidden shadow-sm border border-slate-200 h-48 sm:h-56 md:h-64 w-full" style={{ minHeight: "224px" }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6342.08172427285!2d-121.96206399999998!3d37.36521!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fca3b29bd16bd%3A0x1b7e4bbf55b3700b!2s2040%20Martin%20Ave%2C%20Santa%20Clara%2C%20CA%2095050%2C%20USA!5e0!3m2!1sen!2sin!4v1775548501571!5m2!1sen!2sin"
                 width="100%"
@@ -264,7 +267,7 @@ const ContactSection = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="ComplianceVista Office - Santa Clara, CA"
-                style={{ border: "none", width: "100%", height: "100%", minHeight: "320px" }}
+                style={{ border: "none", width: "100%", height: "100%", minHeight: "224px" }}
               />
             </div>
           </motion.div>

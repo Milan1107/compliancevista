@@ -30,7 +30,7 @@ const FooterSection = () => {
           >
             <img src={logo} alt="Compliance Vista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
           </button>
-          <p className="text-sm text-navy-foreground/60 leading-relaxed max-w-xs text-left">
+          <p className="text-sm text-slate-600 text-center leading-relaxed">
             Enterprise governance simplified. Salesforce-native compliance by Ardira.
           </p>
         </div>
@@ -45,7 +45,7 @@ const FooterSection = () => {
             >
               <img src={logo} alt="Compliance Vista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
             </button>
-            <p className="text-sm text-navy-foreground/60 leading-relaxed max-w-xs text-left">
+            <p className="text-sm text-slate-600 text-center leading-relaxed">
               Enterprise governance simplified. Salesforce-native compliance by Ardira.
             </p>
           </div>
@@ -149,3 +149,4 @@ const FooterSection = () => {
 };
 
 export default FooterSection;
+/* Add this to your src/index.css or global CSS file */

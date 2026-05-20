@@ -19,19 +19,10 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="final-cta" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-hover to-secondary" />
-
-      {/* Progressive dark overlay - darkens as user scrolls through section */}
-      <motion.div
-        className="absolute inset-0 bg-black"
-        style={{ opacity: darkOverlay }}
-      />
-
+    <section ref={sectionRef} id="final-cta" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gradient-to-r from-[#37C643] via-[#2ea82e] to-[#37C643]">
       {/* Single animated orb - subtle effect */}
       <motion.div
-        className="absolute bottom-20 right-[15%] w-80 h-80 bg-white/10 rounded-full blur-3xl"
+        className="absolute bottom-20 right-[15%] w-80 h-80 bg-white/5 rounded-full blur-3xl"
         animate={{
           y: [0, 40, -40, 0],
           x: [0, -30, 30, 0],
@@ -42,13 +33,10 @@ const FinalCTASection = () => {
 
       {/* Subtle glow layer */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-secondary/8 via-transparent to-transparent"
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
+        className="absolute inset-0 bg-gradient-to-t from-white/5 via-transparent to-transparent"
+        animate={{ opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 5, repeat: Infinity }}
       />
-
-      {/* Dot pattern */}
-      <div className="absolute inset-0 dot-pattern opacity-10" />
 
       <div className="container relative text-center max-w-3xl mx-auto z-10 px-4 sm:px-6">
         <motion.div
@@ -57,16 +45,16 @@ const FinalCTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg">
+          <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg">
             Ready to Simplify Enterprise Compliance?
           </h2>
-          <p className="relative text-white/85 mb-6 sm:mb-8 md:mb-10 text-sm sm:text-base md:text-lg leading-relaxed drop-shadow-md">
+          <p className="relative text-white/90 mb-8 sm:mb-10 md:mb-12 text-sm sm:text-base md:text-lg leading-relaxed drop-shadow-md">
             Join 500+ enterprise customers managing compliance with confidence.
           </p>
 
           {/* Buttons container */}
           <motion.div
-            className="relative flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4"
+            className="relative flex flex-col sm:flex-row flex-wrap justify-center gap-4"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -75,12 +63,11 @@ const FinalCTASection = () => {
             {/* Primary Button */}
             <motion.button
               onClick={() => setIsCalendlyOpen(true)}
-              className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base overflow-hidden shadow-xl bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1"
-              whileHover={{ scale: 1.06, y: -2 }}
+              className="group relative px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base overflow-hidden shadow-lg bg-white text-[#37C643] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              {/* Content */}
-              <div className="relative flex items-center justify-center gap-2 font-bold drop-shadow-sm">
+              <div className="relative flex items-center justify-center gap-2 font-bold">
                 <span>Request a Demo</span>
                 <ArrowRight className="w-5 h-5" />
               </div>

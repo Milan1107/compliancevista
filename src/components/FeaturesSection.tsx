@@ -104,26 +104,9 @@ const FeaturesSection = () => {
 	};
 
 	return (
-		<section id="features" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
+		<section id="features" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
 			{/* Background elements */}
-			<div className="absolute inset-0 bg-gradient-to-br from-background via-primary/3 to-secondary/3" />
-			<motion.div
-				className="absolute -top-40 -right-40 w-80 h-80 bg-secondary/8 rounded-full blur-3xl"
-				animate={{
-					x: [0, 30, -20, 0],
-					y: [0, -40, 20, 0],
-				}}
-				transition={{ duration: 12, repeat: Infinity }}
-			/>
-			<motion.div
-				className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/8 rounded-full blur-3xl"
-				animate={{
-					x: [0, -30, 20, 0],
-					y: [0, 40, -20, 0],
-				}}
-				transition={{ duration: 15, repeat: Infinity }}
-			/>
-			<div className="absolute inset-0 dot-pattern opacity-20" />
+			<div className="absolute inset-0 bg-white" />
 
 			<div className="container relative z-10 px-4 sm:px-6">
 				{/* Section Header */}
@@ -135,16 +118,16 @@ const FeaturesSection = () => {
 					className="text-center mb-12 md:mb-16 lg:mb-20 px-4"
 				>
 					<div className="inline-block">
-						<div className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-							<span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+						<div className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+							<span className="text-xs md:text-sm font-semibold text-[#37C643]">
 								Powerful Capabilities
 							</span>
 						</div>
 					</div>
-					<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 gradient-text px-4 mt-4">
+					<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 text-[#37C643] px-4 mt-4">
 						Enterprise Features
 					</h2>
-					<p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
+					<p className="text-sm md:text-base lg:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed px-4">
 						Comprehensive compliance management tools designed for modern enterprises.
 					</p>
 				</motion.div>
@@ -161,24 +144,24 @@ const FeaturesSection = () => {
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
 								className="group relative"
 							>
-								<div className="rounded-xl sm:rounded-2xl border border-primary/20 bg-gradient-to-br from-background/40 to-primary/5 p-4 sm:p-6 md:p-8 h-full relative overflow-hidden transition-all duration-300">
+								<div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md">
 
 									{/* Icon and title */}
-									<div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4 flex-col sm:flex-row">
+									<div className="flex items-start gap-4 mb-4 flex-col sm:flex-row">
 										<motion.div
-											className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+											className="w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
 											animate={{ rotate: [0, 10, 0] }}
 											transition={{ duration: 3, repeat: Infinity }}
 										>
 											<IconComponent iconType={feature.icon} />
 										</motion.div>
-										<motion.h3 className="text-lg md:text-xl font-bold gradient-text pt-2">
+										<motion.h3 className="text-lg md:text-xl font-bold text-slate-900 pt-0">
 											{feature.title}
 										</motion.h3>
 									</div>
 
 									{/* Description Section */}
-									<motion.p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 font-semibold">
+									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-4 font-medium">
 										{feature.desc}
 									</motion.p>
 
@@ -194,8 +177,8 @@ const FeaturesSection = () => {
 														animate={{ opacity: 1, x: 0 }}
 														transition={{ delay: 0.2 + bidx * 0.1 }}
 													>
-														<CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-														<span className="text-foreground leading-tight">{benefit}</span>
+														<CheckCircle className="w-4 h-4 text-[#37C643] flex-shrink-0 mt-0.5" />
+														<span className="text-slate-700 leading-tight">{benefit}</span>
 													</motion.div>
 												))
 											) : null}
@@ -212,11 +195,11 @@ const FeaturesSection = () => {
 						<motion.button
 							onClick={goToPrevious}
 							aria-label="Previous features"
-							className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 flex items-center justify-center hover:border-primary/60 hover:bg-gradient-to-br hover:from-primary/20 hover:to-secondary/20 transition-all duration-300"
+							className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300"
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+							<ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-[#37C643]" />
 						</motion.button>
 
 						{/* Dots indicator - 3 groups for 6 cards shown 2 at a time */}
@@ -228,8 +211,8 @@ const FeaturesSection = () => {
 									aria-label={`Go to features group ${index + 1}`}
 									className={`transition-all duration-300 rounded-full relative ${
 										carouselIndex === index
-											? "bg-gradient-to-r from-primary to-secondary w-5 md:w-6 h-2 md:h-2.5"
-											: "bg-border w-2 md:w-2.5 h-2 md:h-2.5 hover:bg-border/50"
+											? "bg-[#37C643] w-5 md:w-6 h-2 md:h-2.5"
+											: "bg-slate-300 w-2 md:w-2.5 h-2 md:h-2.5 hover:bg-slate-400"
 									}`}
 									whileHover={{ scale: 1.2 }}
 								>
@@ -243,11 +226,11 @@ const FeaturesSection = () => {
 						<motion.button
 							onClick={goToNext}
 							aria-label="Next features"
-							className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/30 flex items-center justify-center hover:border-primary/60 hover:bg-gradient-to-br hover:from-primary/20 hover:to-secondary/20 transition-all duration-300"
+							className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300"
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+							<ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-[#37C643]" />
 						</motion.button>
 					</div>
 				</div>

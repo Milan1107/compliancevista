@@ -38,28 +38,27 @@ const FAQSection = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
   return (
-    <section id="faq" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-surface-light" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+    <section id="faq" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
+      <div className="absolute inset-0 bg-white" />
 
-      <div className="container relative px-4 sm:px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-12 md:mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-              <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
                 FAQ
               </span>
             </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-3 sm:mb-4 mt-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#37C643] px-4 mt-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">
             Find answers to common questions about Compliance Vista and how it can help your organization manage compliance at scale.
           </p>
         </motion.div>
@@ -74,7 +73,7 @@ const FAQSection = () => {
           <Accordion
             type="single"
             collapsible
-            className="w-full space-y-4"
+            className="w-full space-y-3"
             value={openItem}
             onValueChange={setOpenItem}
           >
@@ -89,19 +88,19 @@ const FAQSection = () => {
               >
                 <AccordionItem
                   value={faq.id}
-                  className="border border-border/50 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-lg bg-card"
+                  className="border border-slate-200 rounded-lg sm:rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#37C643]/40 hover:shadow-md bg-white"
                 >
                   <AccordionTrigger
-                    className="px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 hover:bg-surface-light/50 transition-colors duration-200 [&[data-state=open]]:bg-primary/8 group"
+                    className="px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 hover:bg-slate-50/50 transition-colors duration-200 [&[data-state=open]]:bg-[#37C643]/5 group"
                     aria-label={`Question ${index + 1}: ${faq.question}`}
                   >
                     <div className="flex items-center gap-4 text-left flex-1" aria-hidden="true">
-                      <span className="font-semibold text-sm sm:text-base md:text-lg text-foreground group-hover:text-primary transition-colors duration-200">
+                      <span className="font-semibold text-sm sm:text-base md:text-lg text-slate-900 group-hover:text-[#37C643] transition-colors duration-200">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 pt-1 sm:pt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  <AccordionContent className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 pt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

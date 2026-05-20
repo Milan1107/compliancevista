@@ -60,20 +60,9 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section id="benefits" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/2 to-background" />
-      <motion.div 
-        className="absolute top-20 -left-40 w-64 sm:w-96 h-64 sm:h-96 bg-primary/8 rounded-full blur-3xl"
-        animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
-        transition={{ duration: 15, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute bottom-20 -right-40 w-96 h-96 bg-secondary/8 rounded-full blur-3xl"
-        animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
-      <div className="absolute inset-0 dot-pattern opacity-10" />
+    <section id="benefits" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
+      {/* Background elements - Clean white background */}
+      <div className="absolute inset-0 bg-white" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -85,16 +74,16 @@ const BenefitsSection = () => {
           className="text-center mb-12 md:mb-16 px-4"
         >
           <div className="inline-block">
-            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-              <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
                 Why Choose Us
               </span>
             </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 gradient-text px-4 mt-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-[#37C643] px-4 mt-4">
             Key Benefits
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4">
             Transform your compliance management and unlock competitive advantages
           </p>
         </motion.div>
@@ -113,14 +102,22 @@ const BenefitsSection = () => {
               >
                 {/* Card */}
                 <div 
-                  className="relative rounded-xl sm:rounded-2xl glass-strong p-4 sm:p-6 md:p-8 h-full overflow-hidden transition-all duration-300 border border-white/20 hover:border-primary/40"
+                  className={`relative rounded-2xl p-6 md:p-8 h-full overflow-hidden transition-all duration-300 bg-white ${
+                    idx === 1 
+                      ? 'border-2 border-[#37C643] shadow-lg' 
+                      : 'border border-slate-200 shadow-sm hover:shadow-md'
+                  }`}
                   aria-label={`${benefit.title}: ${benefit.description}`}
                   role="article"
                 >
 
                   {/* Icon */}
                   <motion.div
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform relative z-10"
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10 ${
+                      idx === 1
+                        ? 'bg-[#37C643]/15 border border-[#37C643]/30'
+                        : 'bg-[#37C643]/10 border border-[#37C643]/20'
+                    }`}
                     animate={{ rotate: [0, 10, 0] }}
                     transition={{ duration: 3, repeat: Infinity }}
                   >
@@ -128,15 +125,17 @@ const BenefitsSection = () => {
                   </motion.div>
 
                   {/* Content */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold gradient-text mb-2 sm:mb-3 relative z-10">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed relative z-10">
+                  <p className="text-sm md:text-base text-slate-600 leading-relaxed relative z-10">
                     {benefit.description}
                   </p>
 
-                  {/* Bottom accent line */}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-secondary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  {/* Bottom accent line - only for middle card */}
+                  {idx === 1 && (
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#37C643]" />
+                  )}
                 </div>
               </motion.div>
             );

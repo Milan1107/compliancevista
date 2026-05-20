@@ -56,54 +56,54 @@ const SolutionSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative"
+      className="relative bg-white"
       style={{ height: `${totalItems * 80}vh` }}
     >
-      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 dot-pattern opacity-30" />
+      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden bg-white">
+        {/* Clean white background */}
 
         <div className="container relative px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-6 sm:mb-8 md:mb-12"
+            className="text-center mb-12 md:mb-16"
           >
-            <div className="inline-block mb-3 sm:mb-4">
-              <div className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-                <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="inline-block mb-4">
+              <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+                <span className="text-xs md:text-sm font-semibold text-[#37C643]">
                   Our Solution
                 </span>
               </div>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mt-3 sm:mt-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#37C643] px-4 mt-4">
               How Compliance Vista Solves This
             </h2>
+            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">
+              Comprehensive solutions for every compliance challenge
+            </p>
           </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-2 sm:gap-6 md:gap-8 items-stretch max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch max-w-6xl mx-auto">
             {/* Visual */}
             <div className="w-full md:w-1/2 flex justify-center items-stretch">
-              <div className="relative group w-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-xl scale-105" />
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative w-full h-36 sm:h-64 md:h-80 lg:h-96 rounded-2xl sm:rounded-3xl glass-strong overflow-hidden shadow-2xl shadow-primary/20 border border-white/30"
-                >
-                  <img
-                    src={active.image}
-                    alt={`Compliance Vista ${active.title} - ${active.desc.substring(0, 80)}...`}
-                    loading="lazy"
-                    decoding="async"
-                    width={480}
-                    height={384}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </div>
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+                className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200"
+              >
+                <img
+                  src={active.image}
+                  alt={`Compliance Vista ${active.title} - ${active.desc.substring(0, 80)}...`}
+                  loading="lazy"
+                  decoding="async"
+                  width={480}
+                  height={384}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
             </div>
 
             {/* Text */}
@@ -113,33 +113,35 @@ const SolutionSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-xl sm:rounded-2xl border border-primary/20 bg-gradient-to-br from-background/40 to-primary/5 p-3 sm:p-6 md:p-8 space-y-2 sm:space-y-4 md:space-y-6 h-auto md:h-80 lg:h-96 flex flex-col"
-                >
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text">{active.title}</h3>
-                  <p className="text-xs sm:text-base md:text-lg text-muted-foreground leading-relaxed text-justify flex-grow">{active.desc}</p>
-                  <ul className="space-y-1.5 sm:space-y-3 md:space-y-4">
-                    {active.benefits.map((b, j) => (
-                      <li key={j} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base text-foreground">
-                        <div className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <CheckCircle className="w-3.5 h-3.5 text-primary" />
-                        </div>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-
+                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-6 h-auto md:h-80 lg:h-96 flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow">{active.desc}</p>
+                <ul className="space-y-2 md:space-y-3">
+                  {active.benefits.map((b, j) => (
+                    <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">
+                      <div className="w-5 h-5 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#37C643]" />
+                      </div>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
 
               {/* Progress dots */}
-              <div className="flex gap-2 sm:gap-3 pt-3 sm:pt-6 mt-2 sm:mt-4 md:mt-0">
+              <div className="flex gap-2 md:gap-3 pt-4 md:pt-6 mt-4 md:mt-auto">
                 {solutions.map((_, i) => (
-                  <div
+                  <motion.button
                     key={i}
+                    onClick={() => setActiveIndex(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       i === activeIndex
-                        ? "w-8 bg-gradient-to-r from-primary to-secondary"
-                      : "w-2 bg-border"
+                        ? "w-6 md:w-8 bg-[#37C643]"
+                        : "w-2 bg-slate-300 hover:bg-slate-400"
                     }`}
+                    whileHover={{ scale: 1.1 }}
+                    aria-label={`Go to solution ${i + 1}`}
                   />
                 ))}
               </div>

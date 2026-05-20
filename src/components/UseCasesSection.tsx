@@ -58,20 +58,9 @@ const UseCasesSection = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-10 sm:py-12 md:py-14 relative overflow-hidden">
+    <section id="use-cases" className="py-10 sm:py-12 md:py-14 relative overflow-hidden bg-white">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/2 to-background" />
-      <motion.div 
-        className="absolute top-40 -right-40 w-96 h-96 bg-secondary/8 rounded-full blur-3xl"
-        animate={{ x: [0, -50, 0], y: [0, 20, 0] }}
-        transition={{ duration: 13, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute bottom-40 -left-40 w-96 h-96 bg-primary/8 rounded-full blur-3xl"
-        animate={{ x: [0, 50, 0], y: [0, -20, 0] }}
-        transition={{ duration: 14, repeat: Infinity }}
-      />
-      <div className="absolute inset-0 dot-pattern opacity-10" />
+      <div className="absolute inset-0 bg-white" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -83,16 +72,16 @@ const UseCasesSection = () => {
           className="text-center mb-12 md:mb-16 px-4"
         >
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30">
-              <span className="text-xs md:text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <div className="px-4 py-2 rounded-full bg-[#37C643]/10 border border-[#37C643]/30">
+              <span className="text-xs md:text-sm font-semibold text-[#37C643]">
                 Real-World Applications
               </span>
             </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 gradient-text px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 text-[#37C643] px-4">
             Perfect for Every Scenario
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4">
             Enterprises trust ComplianceVista for comprehensive compliance management across all use cases
           </p>
         </motion.div>
@@ -110,34 +99,34 @@ const UseCasesSection = () => {
                 className="group relative"
               >
                 <div 
-                  className="glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 h-full relative overflow-hidden"
+                  className="bg-white rounded-2xl p-6 md:p-8 h-full relative overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300"
                   aria-label={`${useCase.title}: ${useCase.description}`}
                   role="article"
                 >
 
                   {/* Icon and title */}
-                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                  <div className="flex items-start gap-4 mb-4">
                     <motion.div
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                      className="w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
                       animate={{ rotate: [0, 10, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >
                       <IconComponent iconType={useCase.icon} />
                     </motion.div>
                     <div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold gradient-text group-hover:opacity-80 transition-opacity">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 group-hover:text-[#37C643] transition-colors">
                         {useCase.title}
                       </h3>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-5">
+                  <p className="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed mb-5">
                     {useCase.description}
                   </p>
 
                   {/* Features */}
-                  <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5">
+                  <div className="space-y-2 mb-4">
                     {useCase.features.map((feature, fidx) => (
                       <motion.div
                         key={fidx}
@@ -147,19 +136,11 @@ const UseCasesSection = () => {
                         transition={{ delay: 0.2 + fidx * 0.1 }}
                         viewport={{ once: true }}
                       >
-                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span className="text-xs md:text-sm text-muted-foreground">{feature}</span>
+                        <CheckCircle className="w-4 h-4 text-[#37C643] flex-shrink-0" />
+                        <span className="text-xs md:text-sm text-slate-700">{feature}</span>
                       </motion.div>
                     ))}
                   </div>
-
-                  {/* Hover border */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-secondary"
-                    initial={{ width: "0%" }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </div>
               </motion.div>
             );

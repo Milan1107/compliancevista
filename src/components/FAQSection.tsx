@@ -38,10 +38,10 @@ const FAQSection = () => {
   const [openItem, setOpenItem] = useState<string | null>(null);
 
   return (
-    <section id="faq" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30">
+    <section id="faq" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-violet-50/40 via-white to-purple-50/30">
       {/* Subtle decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-100/20 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-violet-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-100/20 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         <motion.div

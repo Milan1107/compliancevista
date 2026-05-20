@@ -56,13 +56,13 @@ const SolutionSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative bg-gradient-to-br from-blue-50/40 via-white to-cyan-50/30"
+      className="relative bg-gradient-to-br from-sky-50/40 via-white to-blue-50/30"
       style={{ height: `${totalItems * 80}vh` }}
     >
-      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-cyan-50/30">
+      <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden bg-gradient-to-br from-sky-50/40 via-white to-blue-50/30">
         {/* Subtle decorations */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-100/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-100/20 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100/20 rounded-full blur-3xl -z-10" />
 
         <div className="container relative px-4 sm:px-6">
           <motion.div
@@ -113,7 +113,7 @@ const SolutionSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-6 h-auto md:h-80 lg:h-96 flex flex-col shadow-sm hover:shadow-md transition-all duration-300"
+                className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-6 h-auto md:h-80 lg:h-96 flex flex-col shadow-sm"
               >
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow">{active.desc}</p>

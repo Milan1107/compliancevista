@@ -141,7 +141,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-5 h-fit flex flex-col shadow-sm hover:shadow-md transition-all duration-300 md:sticky md:top-20"
+            className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-4 md:space-y-5 h-fit flex flex-col shadow-sm md:sticky md:top-20"
           >
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>

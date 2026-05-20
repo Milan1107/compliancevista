@@ -60,10 +60,10 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section id="benefits" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-slate-50 to-white">
+    <section id="benefits" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-slate-50 via-slate-100/50 to-slate-50">
       {/* Subtle accent decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#37C643]/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-100/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-slate-200/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-300/15 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -99,10 +99,10 @@ const BenefitsSection = () => {
               >
                 {/* Card */}
                 <div 
-                  className={`relative rounded-2xl p-6 md:p-8 h-full overflow-hidden transition-all duration-300 bg-white ${
+                  className={`card-hover-primary relative rounded-2xl p-6 md:p-8 h-full overflow-hidden bg-white ${
                     idx === 1 
                       ? 'border-2 border-[#37C643] shadow-lg' 
-                      : 'border border-slate-200 shadow-sm hover:shadow-md'
+                      : 'border border-slate-200 shadow-sm'
                   }`}
                   aria-label={`${benefit.title}: ${benefit.description}`}
                   role="article"
@@ -110,7 +110,7 @@ const BenefitsSection = () => {
 
                   {/* Icon */}
                   <motion.div
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10 ${
+                    className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform relative z-10 ${
                       idx === 1
                         ? 'bg-[#37C643]/15 border border-[#37C643]/30'
                         : 'bg-[#37C643]/10 border border-[#37C643]/20'

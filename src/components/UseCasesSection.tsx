@@ -58,10 +58,10 @@ const UseCasesSection = () => {
   ];
 
   return (
-    <section id="use-cases" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-white via-[#37C643]/2 to-slate-50">
+    <section id="use-cases" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/30">
       {/* Subtle decorative elements */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-teal-100/20 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-green-50/40 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-teal-100/25 rounded-full blur-3xl -z-10" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         {/* Header */}
@@ -96,7 +96,7 @@ const UseCasesSection = () => {
                 className="group relative"
               >
                 <div 
-                  className="bg-white rounded-2xl p-6 md:p-8 h-full relative overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="card-hover-primary bg-white rounded-2xl p-6 md:p-8 h-full relative overflow-hidden border border-slate-200 shadow-sm"
                   aria-label={`${useCase.title}: ${useCase.description}`}
                   role="article"
                 >
@@ -104,7 +104,7 @@ const UseCasesSection = () => {
                   {/* Icon and title */}
                   <div className="flex items-start gap-4 mb-4">
                     <motion.div
-                      className="w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                      className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
                       animate={{ rotate: [0, 10, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >

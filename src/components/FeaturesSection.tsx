@@ -104,10 +104,10 @@ const FeaturesSection = () => {
 	};
 
 	return (
-		<section id="features" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-white">
+		<section id="features" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-emerald-50/40">
 			{/* Subtle accent decorations */}
-			<div className="absolute top-0 left-0 w-72 h-72 bg-green-100/30 rounded-full blur-3xl -z-10" />
-			<div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl -z-10" />
+			<div className="absolute top-0 left-0 w-72 h-72 bg-green-100/20 rounded-full blur-3xl -z-10" />
+			<div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-100/25 rounded-full blur-3xl -z-10" />
 
 			<div className="container relative z-10 px-4 sm:px-6">
 				{/* Section Header */}
@@ -143,12 +143,12 @@ const FeaturesSection = () => {
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
 								className="group relative"
 							>
-								<div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md">
+								<div className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
 									<div className="flex items-start gap-4 mb-4 flex-col sm:flex-row">
 										<motion.div
-											className="w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+											className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
 											animate={{ rotate: [0, 10, 0] }}
 											transition={{ duration: 3, repeat: Infinity }}
 										>

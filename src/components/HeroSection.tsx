@@ -115,7 +115,7 @@ const HeroSection = () => {
                 <div className="relative w-full max-w-[24rem] h-64 md:h-72 lg:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
                   <img
                     src="/company-images/cv-hero-new.webp"
-                    alt="Compliance Vista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"
+                    alt="ComplianceVista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"
                     fetchPriority="high"
                     width={384}
                     height={384}

@@ -10,27 +10,27 @@ import {
 const faqs = [
   {
     id: "item-1",
-    question: "What makes Compliance Vista different from other compliance solutions?",
+    question: "What makes ComplianceVista different from other compliance solutions?",
     answer:
-      "Compliance Vista is 100% native to Salesforce. It provides real-time compliance monitoring, automated audit trails, and intelligent risk scoring all within the platform your team already uses. Plus, it's designed specifically for enterprise-scale governance with multi-language support and industry-specific compliance frameworks.",
+      "ComplianceVista is 100% native to Salesforce. It provides real-time compliance monitoring, automated audit trails, and intelligent risk scoring all within the platform your team already uses. Plus, it's designed specifically for enterprise-scale governance with multi-language support and industry-specific compliance frameworks.",
   },
   {
     id: "item-3",
-    question: "Can Compliance Vista handle multiple regulatory frameworks simultaneously?",
+    question: "Can ComplianceVista handle multiple regulatory frameworks simultaneously?",
     answer:
-      "Absolutely. Compliance Vista supports multiple regulatory frameworks (SOC2, ISO 27001, GDPR, HIPAA, and more) in a single instance. You can map different compliance requirements to different Salesforce objects and have automated workflows that enforce compliance across all regulations simultaneously. Custom frameworks can also be configured based on your specific needs.",
+      "Absolutely. ComplianceVista supports multiple regulatory frameworks (SOC2, ISO 27001, GDPR, HIPAA, and more) in a single instance. You can map different compliance requirements to different Salesforce objects and have automated workflows that enforce compliance across all regulations simultaneously. Custom frameworks can also be configured based on your specific needs.",
   },
   {
     id: "item-4",
-    question: "What kind of reporting and dashboards does Compliance Vista provide?",
+    question: "What kind of reporting and dashboards does ComplianceVista provide?",
     answer:
-      "Compliance Vista includes pre-built compliance dashboards for executive reporting, regulatory audits, and operational monitoring. You get real-time KPI tracking, automated compliance metrics, audit-ready reports, and customizable dashboards. All reports can be exported in multiple formats and integrated with your existing Salesforce reporting infrastructure.",
+      "ComplianceVista includes pre-built compliance dashboards for executive reporting, regulatory audits, and operational monitoring. You get real-time KPI tracking, automated compliance metrics, audit-ready reports, and customizable dashboards. All reports can be exported in multiple formats and integrated with your existing Salesforce reporting infrastructure.",
   },
   {
     id: "item-5",
-    question: "Is my data secure within Compliance Vista?",
+    question: "Is my data secure within ComplianceVista?",
     answer:
-      "Yes. Compliance Vista is built entirely on Salesforce's secure infrastructure with SOC 2 Type II, ISO 27001, and GDPR compliance certifications. Data never leaves the Salesforce platform, ensuring enterprise-grade security. We implement role-based access controls, encryption at rest and in transit, and comprehensive audit trails for all data access.",
+      "Yes. ComplianceVista is built entirely on Salesforce's secure infrastructure with SOC 2 Type II, ISO 27001, and GDPR compliance certifications. Data never leaves the Salesforce platform, ensuring enterprise-grade security. We implement role-based access controls, encryption at rest and in transit, and comprehensive audit trails for all data access.",
   },
 ];
 
@@ -59,7 +59,7 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto px-4 mt-3">
-            Find answers to common questions about Compliance Vista and how it can help your organization manage compliance at scale.
+            Find answers to common questions about ComplianceVista and how it can help your organization manage compliance at scale.
           </p>
         </motion.div>
 

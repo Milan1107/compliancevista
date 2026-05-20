@@ -179,12 +179,12 @@ const Navbar = () => {
         >
           <button
             onClick={handleLogoClick}
-            aria-label="Compliance Vista - Return to Home"
+            aria-label="ComplianceVista - Return to Home"
             className="flex items-center gap-2 transition-all duration-500"
           >
             <img
               src={logo}
-              alt="Compliance Vista"
+              alt="ComplianceVista"
               width={180}
               height={40}
               className={`transition-all duration-500 h-10 w-auto ${!scrolled ? "" : isOverColoredSection ? "brightness-150" : ""}`}

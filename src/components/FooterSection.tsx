@@ -25,10 +25,10 @@ const FooterSection = () => {
         <div className="flex flex-col items-start mb-8 sm:mb-10 md:hidden">
           <button 
             onClick={() => navigateToSection('home')} 
-            aria-label="Compliance Vista - Return to Home"
+            aria-label="ComplianceVista - Return to Home"
             className="flex items-center gap-2.5 mb-6 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
           >
-            <img src={logo} alt="Compliance Vista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
+            <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
           </button>
           <p className="text-sm text-slate-600 text-center leading-relaxed">
             Enterprise governance simplified. Salesforce-native compliance by Ardira.
@@ -40,10 +40,10 @@ const FooterSection = () => {
           <div className="hidden md:flex flex-col items-start md:col-span-1">
             <button 
               onClick={() => navigateToSection('home')} 
-              aria-label="Compliance Vista - Return to Home"
+              aria-label="ComplianceVista - Return to Home"
               className="flex items-center gap-2.5 mb-6 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
             >
-              <img src={logo} alt="Compliance Vista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
+              <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
             </button>
             <p className="text-sm text-slate-600 text-center leading-relaxed">
               Enterprise governance simplified. Salesforce-native compliance by Ardira.

@@ -2,7 +2,7 @@
 
 ## 🎯 What Was Done
 
-I've enhanced the UI card hover behavior across your entire Compliance Vista website with a modern, professional animation system. This creates a consistent, smooth, and visually appealing interaction throughout all sections.
+I've enhanced the UI card hover behavior across your entire ComplianceVista website with a modern, professional animation system. This creates a consistent, smooth, and visually appealing interaction throughout all sections.
 
 ## ✨ Features Implemented
 

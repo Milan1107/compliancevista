@@ -53,7 +53,7 @@ const IconComponent = ({ iconType }: { iconType: string }) => {
 	};
 
 	const altTextMap: { [key: string]: string } = {
-		clipboard: "Clipboard icon for Compliance Vista policy management feature",
+		clipboard: "Clipboard icon for ComplianceVista policy management feature",
 		dartboard: "Dartboard icon for role-based access control security",
 		chart: "Chart icon for compliance reporting and regulatory frameworks",
 		lightning: "Lightning bolt icon for deadline tracking and automated reminders",

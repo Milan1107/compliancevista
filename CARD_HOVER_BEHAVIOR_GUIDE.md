@@ -1,7 +1,7 @@
 # Card Hover Behavior Enhancement Guide
 
 ## Overview
-This document describes the comprehensive card hover animation system implemented across the Compliance Vista website. All cards now feature modern, smooth animations that enhance user interaction and visual feedback.
+This document describes the comprehensive card hover animation system implemented across the ComplianceVista website. All cards now feature modern, smooth animations that enhance user interaction and visual feedback.
 
 ## Implementation Details
 

@@ -101,7 +101,7 @@ const BenefitsSection = () => {
                 <div 
                   className={`card-hover-primary relative rounded-2xl p-6 md:p-8 h-full overflow-hidden bg-white ${
                     idx === 1 
-                      ? 'border-2 border-[#37C643] shadow-lg' 
+                      ? 'border border-slate-200 shadow-lg' 
                       : 'border border-slate-200 shadow-sm'
                   }`}
                   aria-label={`${benefit.title}: ${benefit.description}`}
@@ -129,10 +129,7 @@ const BenefitsSection = () => {
                     {benefit.description}
                   </p>
 
-                  {/* Bottom accent line - only for middle card */}
-                  {idx === 1 && (
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#37C643]" />
-                  )}
+
                 </div>
               </motion.div>
             );

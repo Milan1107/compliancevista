@@ -13,34 +13,56 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { loadRecaptcha, executeRecaptcha } = useRecaptcha();
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const [rightSideHeight, setRightSideHeight] = useState<string>("auto");
+  const rightSideRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
+  const [isInContactSection, setIsInContactSection] = useState(false);
 
   useEffect(() => {
-    const updateHeight = () => {
-      if (formRef.current && window.innerWidth >= 768) {
-        setRightSideHeight(`${formRef.current.offsetHeight}px`);
-      } else {
-        setRightSideHeight("auto");
-      }
+    const handleScroll = () => {
+      if (!containerRef.current || !rightContentRef.current) return;
+
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const isInSection = containerRect.top < window.innerHeight && containerRect.bottom > 0;
+      setIsInContactSection(isInSection);
     };
 
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateHeight();
-    });
-
-    if (formRef.current) {
-      resizeObserver.observe(formRef.current);
-    }
-
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-      resizeObserver.disconnect();
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isInContactSection || !rightContentRef.current) return;
+
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (!rightContentRef.current) return;
+
+      const maxScroll = rightContentRef.current.scrollHeight - rightContentRef.current.clientHeight;
+      const currentScroll = rightContentRef.current.scrollTop;
+      const isScrollingDown = e.deltaY > 0;
+      const isScrollingUp = e.deltaY < 0;
+
+      // Check if we can still scroll in the right card
+      const canScrollDown = isScrollingDown && currentScroll < maxScroll;
+      const canScrollUp = isScrollingUp && currentScroll > 0;
+
+      // Only prevent default scroll if the card can scroll in that direction
+      if (canScrollDown || canScrollUp) {
+        e.preventDefault();
+        rightContentRef.current.scrollTop += e.deltaY;
+      }
+      // If card is at bottom and scrolling down, or at top and scrolling up, allow normal page scroll
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      clearTimeout(scrollTimeout);
+    };
+  }, [isInContactSection]);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -133,7 +155,7 @@ const ContactSection = () => {
         </motion.div>
 
         {/* Two Column Layout - Form Left (Sticky), Info + Map Right (Fixed Height) */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-start">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-start" ref={containerRef}>
           {/* Form - Left Side - Sticky with Internal Scroll */}
           <motion.form
             ref={formRef}
@@ -141,11 +163,10 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20"
-            style={{ maxHeight: rightSideHeight }}
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20 h-fit"
           >
             {/* Scrollable Form Content */}
-            <div className="overflow-y-auto scrollbar-hide h-full flex flex-col">
+            <div className="overflow-visible flex flex-col">
               <div className="space-y-4 md:space-y-5 p-6 md:p-8 flex flex-col flex-shrink-0">
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>
@@ -190,16 +211,16 @@ const ContactSection = () => {
             </div>
           </motion.form>
 
-          {/* Right Side - Info + Map (Fixed Height, Internal Scroll) */}
+          {/* Right Side - Info + Map (Sticky with Internal Scroll) */}
           <motion.div
+            ref={rightSideRef}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20"
-            style={{ maxHeight: rightSideHeight }}
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20 h-fit"
           >
             {/* Scrollable Content Container */}
-            <div className="overflow-y-auto scrollbar-hide h-full flex flex-col">
+            <div ref={rightContentRef} className="overflow-y-auto scrollbar-hide flex flex-col" style={{ maxHeight: "648px" }}>
               {/* Contact Info Box - TOP */}
               <div className="flex flex-col p-6 md:p-8 flex-shrink-0">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">

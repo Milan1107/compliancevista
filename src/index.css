@@ -241,18 +241,13 @@ button.bg-gradient-to-r, a.bg-gradient-to-r, .bg-gradient-to-r { background: #37
 /* Modern Card Hover Animations */
 @keyframes card-lift {
   0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-8px) scale(1.02); }
+  100% { transform: translateY(-4px) scale(1); }
 }
 
 @keyframes border-glow {
   0% { border-color: rgba(55, 198, 67, 0); box-shadow: 0 0 0px rgba(55, 198, 67, 0); }
   50% { border-color: rgba(55, 198, 67, 0.5); box-shadow: 0 0 12px rgba(55, 198, 67, 0.3); }
   100% { border-color: rgba(55, 198, 67, 0.6); box-shadow: 0 0 20px rgba(55, 198, 67, 0.4), inset 0 0 12px rgba(55, 198, 67, 0.05); }
-}
-
-@keyframes icon-bounce {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.15) rotate(5deg); }
 }
 
 .card-hover-primary {
@@ -264,6 +259,6 @@ button.bg-gradient-to-r, a.bg-gradient-to-r, .bg-gradient-to-r { background: #37
   box-shadow: 0 20px 40px rgba(55, 198, 67, 0.15), 0 0 20px rgba(55, 198, 67, 0.1);
 }
 
-.card-hover-primary:hover .card-icon {
-  animation: icon-bounce 0.6s ease-in-out;
+.card-hover-primary:hover h3 {
+  color: #37C643;
 }

@@ -114,10 +114,10 @@ const SolutionSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-auto md:h-80 lg:h-96 flex flex-col shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-auto md:h-80 lg:h-96 flex flex-col shadow-sm"
             >
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed flex-grow mt-1">{active.desc}</p>
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>
               <ul className="space-y-2 md:space-y-3">
                 {active.benefits.map((b, j) => (
                   <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">

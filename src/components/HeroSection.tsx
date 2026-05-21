@@ -11,7 +11,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[85dvh] md:min-h-[100dvh] pt-24 md:pt-0 flex items-center overflow-hidden bg-gradient-to-br from-white via-[#37C643]/5 to-[#37C643]/8">
+    <section id="home" className="relative min-h-[85dvh] md:min-h-[100dvh] pt-20 md:pt-0 flex items-center overflow-hidden bg-gradient-to-br from-white via-[#37C643]/5 to-[#37C643]/8">
       {/* Subtle greenish background overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#37C643]/3 to-[#37C643]/4" />
       

@@ -201,11 +201,11 @@ const ContactSection = () => {
                   {isSubmitting ? "Submitting..." : "Send"}
                 </button>
 
-                {/* reCAPTCHA Badge Notice */}
-                <p className="text-xs text-slate-500 text-center mt-4">
-                  This site is protected by reCAPTCHA and the Google
-                  <br />
-                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-[#37C643] transition-colors">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="hover:text-[#37C643] transition-colors">Terms of Service</a> apply.
+              
+
+                {/* Privacy Commitment Notice */}
+                <p className="text-xs text-slate-500 text-center mt-4 leading-relaxed">
+                  We're committed to your privacy. ComplianceVista uses the information you provide us to contact you about relevant content, products and services. You may unsubscribe from these communications at any time. For information, check out our <a href="/privacy-policy" className="text-[#37B44A] font-medium hover:underline transition-colors">Privacy Policy</a>.
                 </p>
               </div>
             </div>

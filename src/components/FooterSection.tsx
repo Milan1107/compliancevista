@@ -30,7 +30,7 @@ const FooterSection = () => {
           >
             <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
           </button>
-          <p className="text-sm text-slate-600 text-center leading-relaxed">
+          <p className="text-sm text-navy-foreground/80 text-center leading-relaxed">
             Enterprise governance simplified. Salesforce-native compliance by Ardira.
           </p>
         </div>
@@ -45,7 +45,7 @@ const FooterSection = () => {
             >
               <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
             </button>
-            <p className="text-sm text-slate-600 text-center leading-relaxed">
+            <p className="text-sm text-navy-foreground/80 text-center leading-relaxed">
               Enterprise governance simplified. Salesforce-native compliance by Ardira.
             </p>
           </div>
@@ -101,7 +101,11 @@ const FooterSection = () => {
               <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Contact Info</h3>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0 pt-[2px]" aria-hidden="true">🌐</span>
+                  <svg className="shrink-0 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#37B44A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
                   <a 
                     href="https://compliance-quest-page.vercel.app/" 
                     target="_blank" 
@@ -113,13 +117,18 @@ const FooterSection = () => {
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0 pt-[2px]" aria-hidden="true">✉️</span>
+                  <svg className="shrink-0 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#37B44A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
                   <a href="mailto:support@ardira.com" aria-label="Email support at support@ardira.com" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
                     support@ardira.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="shrink-0 pt-[2px]" aria-hidden="true">📱</span>
+                  <svg className="shrink-0 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#37B44A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
                   <a href="tel:+16697776838" aria-label="Call us at 1.669.777.6838" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
                     1.669.777.6838
                   </a>

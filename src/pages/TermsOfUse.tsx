@@ -186,20 +186,21 @@ const TermsOfUse = () => {
 
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-foreground">Contact Us</h2>
-                <div className="glass-strong rounded-xl p-4 space-y-2">
+                <div className="space-y-1">
                   <p className="text-muted-foreground">
                     For questions about these Terms of Use, please contact us at:
                   </p>
+                  <p className="text-foreground font-semibold">Legal, ComplianceVista</p>
+                  <p className="text-muted-foreground">2040 Martin Ave</p>
+                  <p className="text-muted-foreground">Santa Clara, CA 95050</p>
                   <p className="text-muted-foreground">
-                    Email:{" "}
-                    <a href="mailto:legal@ardira.com" className="text-primary hover:underline">
-                      legal@ardira.com
+                    <a href="tel:16697776838" className="text-primary hover:underline">
+                      1.669.777.6838
                     </a>
                   </p>
                   <p className="text-muted-foreground">
-                    Support:{" "}
-                    <a href="mailto:support@ardira.com" className="text-primary hover:underline">
-                      support@ardira.com
+                    <a href="mailto:legal@ardira.com" className="text-primary hover:underline">
+                      legal@ardira.com
                     </a>
                   </p>
                 </div>

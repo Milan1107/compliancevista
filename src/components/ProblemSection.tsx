@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FileText, Search, AlertCircle, Workflow } from "lucide-react";
 
 const problems = [
 	{
@@ -24,30 +25,17 @@ const problems = [
 ];
 
 const IconComponent = ({ iconType }: { iconType: string }) => {
-	const iconMap: { [key: string]: string } = {
-		clipboard: "/icons/SV-Clipboard.webp",
-		magnifying: "/icons/SV-MagnifyingGlass.webp",
-		email: "/icons/SV-Email.webp",
-		circular: "/icons/SV-CircularArrows.webp",
-	};
-
-	const altTextMap: { [key: string]: string } = {
-		clipboard: "Clipboard icon representing scattered compliance data challenges",
-		magnifying: "Magnifying glass icon representing manual audit trail problems",
-		email: "Email icon representing risk visibility gaps in compliance",
-		circular: "Circular arrows icon representing workflow inefficiency issues",
+	const iconMap: { [key: string]: JSX.Element } = {
+		clipboard: <FileText className="w-6 h-6" strokeWidth={1.5} />,
+		magnifying: <Search className="w-6 h-6" strokeWidth={1.5} />,
+		email: <AlertCircle className="w-6 h-6" strokeWidth={1.5} />,
+		circular: <Workflow className="w-6 h-6" strokeWidth={1.5} />,
 	};
 
 	return (
-		<img
-			src={iconMap[iconType]}
-			alt={altTextMap[iconType] || iconType}
-			loading="lazy"
-			decoding="async"
-			width={24}
-			height={24}
-			className="w-6 h-6 object-contain drop-shadow-md"
-		/>
+		<div className="drop-shadow-md flex items-center justify-center w-full h-full">
+			{iconMap[iconType] || iconMap.clipboard}
+		</div>
 	);
 };
 
@@ -88,14 +76,16 @@ const ProblemSection = () => (
 						transition={{ delay: i * 0.1 }}
 						className="group relative"
 					>
-						<div className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
-							<motion.div
-								className="card-icon w-12 h-12 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 mb-4 transition-transform"
-								animate={{ rotate: [0, 10, 0] }}
-								transition={{ duration: 3, repeat: Infinity }}
-							>
+					<div className={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm transition-all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${
+						i % 2 === 1 ? '' : 'card-hover-primary'
+					}`}>
+						<div
+							className="card-icon w-12 h-12 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 mb-4 transition-transform transform-none"
+						>
+							<div className="text-[#37C643] flex items-center justify-center w-full h-full">
 								<IconComponent iconType={p.icon} />
-							</motion.div>
+							</div>
+						</div>
 							<h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3">
 								{p.title}
 							</h3>

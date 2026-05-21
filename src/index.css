@@ -258,7 +258,3 @@ button.bg-gradient-to-r, a.bg-gradient-to-r, .bg-gradient-to-r { background: #37
   animation: card-lift 0.4s ease-out forwards;
   box-shadow: 0 20px 40px rgba(55, 198, 67, 0.15), 0 0 20px rgba(55, 198, 67, 0.1);
 }
-
-.card-hover-primary:hover h3 {
-  color: #37C643;
-}

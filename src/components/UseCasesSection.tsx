@@ -1,31 +1,18 @@
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Clipboard, Target, Users, AlertCircle } from "lucide-react";
 
 const IconComponent = ({ iconType }: { iconType: string }) => {
-  const iconMap: { [key: string]: string } = {
-    clipboard: "/icons/SV-Clipboard.webp",
-    magnifying: "/icons/SV-MagnifyingGlass.webp",
-    dartboard: "/icons/SV-Dartboard.webp",
-    talkbubbles: "/icons/SV-TalkBubbles.webp",
-  };
-
-  const altTextMap: { [key: string]: string } = {
-    clipboard: "Clipboard icon for audit management use case",
-    magnifying: "Magnifying glass icon for vendor risk assessment",
-    dartboard: "Dartboard icon for regulatory compliance targeting",
-    talkbubbles: "Talk bubbles icon for employee assessment and feedback",
+  const iconMap: { [key: string]: JSX.Element } = {
+    clipboard: <Clipboard className="w-7 h-7" strokeWidth={1.5} />,
+    magnifying: <AlertCircle className="w-7 h-7" strokeWidth={1.5} />,
+    dartboard: <Target className="w-7 h-7" strokeWidth={1.5} />,
+    talkbubbles: <Users className="w-7 h-7" strokeWidth={1.5} />,
   };
 
   return (
-    <img
-      src={iconMap[iconType]}
-      alt={altTextMap[iconType] || iconType}
-      loading="lazy"
-      decoding="async"
-      width={28}
-      height={28}
-      className="w-7 h-7 object-contain drop-shadow-md"
-    />
+    <div className="drop-shadow-md flex items-center justify-center w-full h-full">
+      {iconMap[iconType] || iconMap.clipboard}
+    </div>
   );
 };
 
@@ -103,15 +90,15 @@ const UseCasesSection = () => {
 
                   {/* Icon and title */}
                   <div className="flex items-start gap-4 mb-4">
-                    <motion.div
-                      className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
-                      animate={{ rotate: [0, 10, 0] }}
-                      transition={{ duration: 3, repeat: Infinity }}
+                    <div
+                      className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform transform-none"
                     >
-                      <IconComponent iconType={useCase.icon} />
-                    </motion.div>
+                      <div className="text-[#37C643] flex items-center justify-center w-full h-full">
+                        <IconComponent iconType={useCase.icon} />
+                      </div>
+                    </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 group-hover:text-[#37C643] transition-colors">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900">
                         {useCase.title}
                       </h3>
                     </div>

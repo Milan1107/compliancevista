@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle, FileText, Shield, BarChart3, Zap, Search, Smartphone } from "lucide-react";
 
 const features = [
 	{
@@ -42,35 +42,20 @@ const features = [
 ];
 
 const IconComponent = ({ iconType }: { iconType: string }) => {
-	const iconMap: { [key: string]: string } = {
-		clipboard: "/icons/SV-Clipboard.webp",
-		dartboard: "/icons/SV-Dartboard.webp",
-		chart: "/icons/SV-Chart.webp",
-		lightning: "/icons/SV-LightningBolt.webp",
-		magnifying: "/icons/SV-MagnifyingGlass.webp",
-		circular: "/icons/SV-CircularArrows.webp",
-		mobile: "/icons/SV-MobileAccess.png"
-	};
-
-	const altTextMap: { [key: string]: string } = {
-		clipboard: "Clipboard icon for ComplianceVista policy management feature",
-		dartboard: "Dartboard icon for role-based access control security",
-		chart: "Chart icon for compliance reporting and regulatory frameworks",
-		lightning: "Lightning bolt icon for deadline tracking and automated reminders",
-		magnifying: "Magnifying glass icon for audit management and evidence tracking",
-		circular: "Mobile device icon for on-the-go compliance management",
+	const iconMap: { [key: string]: JSX.Element } = {
+		clipboard: <FileText className="w-8 h-8" strokeWidth={1.5} />,
+		dartboard: <Shield className="w-8 h-8" strokeWidth={1.5} />,
+		chart: <BarChart3 className="w-8 h-8" strokeWidth={1.5} />,
+		lightning: <Zap className="w-8 h-8" strokeWidth={1.5} />,
+		magnifying: <Search className="w-8 h-8" strokeWidth={1.5} />,
+		circular: <Smartphone className="w-8 h-8" strokeWidth={1.5} />,
+		mobile: <Smartphone className="w-8 h-8" strokeWidth={1.5} />
 	};
 
 	return (
-		<img
-			src={iconMap[iconType]}
-			alt={altTextMap[iconType] || iconType}
-			loading="lazy"
-			decoding="async"
-			width={32}
-			height={32}
-			className="w-8 h-8 object-contain drop-shadow-md"
-		/>
+		<div className="drop-shadow-md flex items-center justify-center w-full h-full">
+			{iconMap[iconType] || iconMap.clipboard}
+		</div>
 	);
 };
 
@@ -146,21 +131,21 @@ const FeaturesSection = () => {
 								<div className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
-									<div className="flex items-start gap-4 mb-4 flex-col sm:flex-row">
+									<div className="flex items-center gap-4 mb-3 flex-col sm:flex-row">
 										<motion.div
 											className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
-											animate={{ rotate: [0, 10, 0] }}
-											transition={{ duration: 3, repeat: Infinity }}
 										>
-											<IconComponent iconType={feature.icon} />
+											<div className="text-[#37C643] flex items-center justify-center w-full h-full">
+												<IconComponent iconType={feature.icon} />
+											</div>
 										</motion.div>
-										<motion.h3 className="text-lg md:text-xl font-bold text-slate-900 pt-0">
+										<motion.h3 className="text-lg md:text-xl font-bold text-slate-900">
 											{feature.title}
 										</motion.h3>
 									</div>
 
 									{/* Description Section */}
-									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-4 font-medium">
+									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-3 font-medium">
 										{feature.desc}
 									</motion.p>
 

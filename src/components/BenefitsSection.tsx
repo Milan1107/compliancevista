@@ -1,32 +1,19 @@
 import { motion } from "framer-motion";
+import { Shield, Zap, Eye, TrendingUp, Award } from "lucide-react";
 
 const IconComponent = ({ iconType }: { iconType: string }) => {
-  const iconMap: { [key: string]: string } = {
-    dartboard: "/icons/SV-Dartboard.webp",
-    lightning: "/icons/SV-LightningBolt.webp",
-    magnifying: "/icons/SV-MagnifyingGlass.webp",
-    chart: "/icons/SV-Chart.webp",
-    clipboard: "/icons/SV-Clipboard.webp",
-  };
-
-  const altTextMap: { [key: string]: string } = {
-    dartboard: "Dartboard icon representing risk minimization through compliance",
-    lightning: "Lightning bolt icon representing operational efficiency gains",
-    magnifying: "Magnifying glass icon representing improved compliance visibility",
-    chart: "Chart icon representing business growth through compliance",
-    clipboard: "Clipboard icon representing trust and reputation building",
+  const iconMap: { [key: string]: JSX.Element } = {
+    dartboard: <Shield className="w-8 h-8" strokeWidth={1.5} />,
+    lightning: <Zap className="w-8 h-8" strokeWidth={1.5} />,
+    magnifying: <Eye className="w-8 h-8" strokeWidth={1.5} />,
+    chart: <TrendingUp className="w-8 h-8" strokeWidth={1.5} />,
+    clipboard: <Award className="w-8 h-8" strokeWidth={1.5} />,
   };
 
   return (
-    <img
-      src={iconMap[iconType]}
-      alt={altTextMap[iconType] || iconType}
-      loading="lazy"
-      decoding="async"
-      width={32}
-      height={32}
-      className="w-8 h-8 object-contain drop-shadow-md"
-    />
+    <div className="drop-shadow-md flex items-center justify-center w-full h-full">
+      {iconMap[iconType] || iconMap.dartboard}
+    </div>
   );
 };
 
@@ -109,20 +96,20 @@ const BenefitsSection = () => {
                 >
 
                   {/* Icon */}
-                  <motion.div
-                    className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform relative z-10 ${
+                  <div
+                    className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform relative z-10 transform-none ${
                       idx === 1
                         ? 'bg-[#37C643]/15 border border-[#37C643]/30'
                         : 'bg-[#37C643]/10 border border-[#37C643]/20'
                     }`}
-                    animate={{ rotate: [0, 10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
                   >
-                    <IconComponent iconType={benefit.icon} />
-                  </motion.div>
+                    <div className="text-[#37C643] flex items-center justify-center w-full h-full">
+                      <IconComponent iconType={benefit.icon} />
+                    </div>
+                  </div>
 
                   {/* Content */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10 -mt-2">
                     {benefit.title}
                   </h3>
                   <p className="text-sm md:text-base text-slate-600 leading-relaxed relative z-10">

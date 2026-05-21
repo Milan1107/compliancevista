@@ -54,7 +54,7 @@ const HeroSection = () => {
                     <svg className="absolute -bottom-4 left-0 w-full" viewBox="0 0 200 12" fill="none">
                       <motion.path
                         d="M2 10C50 6 150 6 198 10"
-                        stroke="hsl(168 76% 42%)"
+                        stroke="#39B44A"
                         strokeWidth="3"
                         strokeLinecap="round"
                         initial={{ pathLength: 0 }}

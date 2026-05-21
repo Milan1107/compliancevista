@@ -114,7 +114,7 @@ const Navbar = () => {
     const scrollToSection = (targetId: string) => {
       const element = document.querySelector(targetId);
       if (element) {
-        const offset = 120; // Matches our scroll-padding-top
+        const offset = 80; // Reduced offset to prevent excessive white space
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
 

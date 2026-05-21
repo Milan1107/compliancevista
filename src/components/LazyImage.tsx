@@ -34,13 +34,14 @@ export const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(
         { rootMargin: "50px" }
       );
 
-      if (ref && "current" in ref && ref.current) {
-        observer.observe(ref.current);
+      const currentRef = ref && "current" in ref ? ref.current : null;
+      if (currentRef) {
+        observer.observe(currentRef);
       }
 
       return () => {
-        if (ref && "current" in ref && ref.current) {
-          observer.unobserve(ref.current);
+        if (currentRef) {
+          observer.unobserve(currentRef);
         }
       };
     }, [src, ref, once]);

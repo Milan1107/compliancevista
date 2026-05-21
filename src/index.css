@@ -78,7 +78,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 7.5rem; /* Standard offset to account for fixed navbar */
+    scroll-padding-top: 5rem; /* Standard offset to account for fixed navbar */
   }
 
   body {
@@ -184,10 +184,9 @@ img, iframe, video {
 
 /* Performance Optimizations for Mobile */
 @media (max-width: 768px) {
-  /* Disable heavy floating animations on mobile to stop "Forced Reflows" and save CPU */
+  /* Soften heavy floating animations on mobile instead of disabling completely */
   .float-animation {
-    animation: none !important;
-    transform: none !important;
+    animation-duration: 8s !important;
   }
 
   /* Background stability - ensure absolute elements have strict containment */
@@ -234,9 +233,7 @@ img, iframe, video {
 .grecaptcha-badge:hover {
   width: 256px !important;
 }
-.gradient-text { background: none !important; -webkit-text-fill-color: #37C643 !important; color: #37C643 !important; }
-button.bg-gradient-to-r, a.bg-gradient-to-r, .bg-gradient-to-r { background: #37C643 !important; }
-.mesh-bg, .bg-gradient-to-b, .bg-gradient-to-r, .bg-gradient-to-tr { background-image: none !important; background-color: #ffffff !important; } body { background-color: #F8FAFC !important; }
+
 
 /* Modern Card Hover Animations */
 @keyframes card-lift {

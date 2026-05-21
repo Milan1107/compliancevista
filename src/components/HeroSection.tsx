@@ -45,7 +45,7 @@ const HeroSection = () => {
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.2] text-foreground space-y-1 sm:space-y-2">
                 <div>
-                  <span className="gradient-text">Assessments. Risk. Compliance.</span>
+                  <span className="text-[#37C643]">Assessments. Risk. Compliance.</span>
                 </div>
                 <div>
                   All Automated.{" "}

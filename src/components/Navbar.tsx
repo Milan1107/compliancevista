@@ -20,6 +20,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isOverColoredSection, setIsOverColoredSection] = useState(false);
+  const [isButtonOverColoredSection, setIsButtonOverColoredSection] = useState(false);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -37,12 +38,18 @@ const Navbar = () => {
       const heroElement = document.getElementById("home");
       
       let overColored = false;
+      let buttonOverColored = false;
       
       // Check if over Final CTA (green section at bottom)
       if (finalCtaElement) {
         const finalCtaRect = finalCtaElement.getBoundingClientRect();
         if (finalCtaRect.top < 100 && finalCtaRect.bottom > 0) {
           overColored = true;
+        }
+        
+        // Button is 24px from bottom + 48px height. Let's check if the button area is inside the section.
+        if (finalCtaRect.top < window.innerHeight - 24 && finalCtaRect.bottom > window.innerHeight - 72) {
+          buttonOverColored = true;
         }
       }
       
@@ -52,6 +59,7 @@ const Navbar = () => {
       }
       
       setIsOverColoredSection(overColored);
+      setIsButtonOverColoredSection(buttonOverColored);
 
       // Reliable scroll-based section detection
       if (!isIndependentPage) {
@@ -192,35 +200,25 @@ const Navbar = () => {
                       : "text-foreground hover:text-foreground hover:bg-primary/5"
                     : !scrolled
                     ? activeSection === link.href.slice(1)
-                      ? "text-slate-900"
+                      ? "text-[#37C643]"
                       : "text-slate-800 hover:text-slate-900 hover:bg-slate-800/5"
                     : activeSection === link.href.slice(1)
                     ? isOverColoredSection
                       ? "text-white"
-                      : "text-primary"
+                      : "text-[#37C643]"
                     : isOverColoredSection
                     ? "text-white hover:text-white hover:bg-white/10"
                     : "text-foreground hover:text-foreground hover:bg-primary/5"
                 }`}
               >
                 {link.label}
-                {!isIndependentPage && activeSection === link.href.slice(1) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"
-                  />
-                )}
               </button>
             ))}
 
             <button
               onClick={() => setIsCalendlyOpen(true)}
               aria-label="Book a product demo"
-              className={`ml-4 ${
-                !scrolled
-                  ? "bg-gradient-to-r from-primary to-secondary text-white"
-                  : "bg-gradient-to-r from-primary to-secondary text-primary-foreground"
-              } rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 ${
+              className={`ml-4 bg-[#37C643] text-white rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 hover:-translate-y-1 ${
                 scrolled ? "px-5 py-2 text-xs" : "px-6 py-2.5 text-sm"
               }`}
             >
@@ -268,7 +266,7 @@ const Navbar = () => {
                   transition={{ delay: index * 0.08, duration: 0.3, ease: "easeOut" }}
                   className={`text-left py-3 px-4 rounded-xl text-sm font-medium transition-colors ${
                     !isIndependentPage && activeSection === link.href.slice(1)
-                      ? "text-primary bg-primary/10"
+                      ? "text-[#37C643] bg-[#37C643]/10"
                       : "text-slate-800 hover:bg-slate-800/5"
                   }`}
                 >
@@ -284,11 +282,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.08, duration: 0.3, ease: "easeOut" }}
-                className={`${
-                  !scrolled
-                    ? "bg-gradient-to-r from-primary to-secondary text-white"
-                    : "bg-gradient-to-r from-primary to-secondary text-primary-foreground"
-                } px-5 py-3 rounded-xl text-sm font-semibold mt-2`}
+                className={`bg-[#37C643] text-white px-5 py-3 rounded-xl text-sm font-semibold mt-2`}
               >
                 Book Demo
               </motion.button>
@@ -305,7 +299,11 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300"
+            className={`fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full text-white shadow-lg hover:shadow-xl border flex items-center justify-center transition-all duration-300 ${
+              isButtonOverColoredSection
+                ? "bg-[#069587] hover:bg-[#057a6e] border-[#057a6e]"
+                : "bg-[#37C643] hover:bg-[#2eaa38] border-[#2eaa38]"
+            }`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Scroll to top"

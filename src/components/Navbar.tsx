@@ -251,8 +251,8 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className={`md:hidden overflow-hidden backdrop-blur-xl border-t transition-all duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
               scrolled
-                ? "mx-4 md:mx-8 mt-1 rounded-b-[2.5rem] bg-white/60 border-white/40"
-                : "bg-white/60 border-white/20"
+                ? "mx-4 md:mx-8 mt-1 rounded-b-[2.5rem] bg-white border-white/40"
+                : "bg-white border-white/20"
             }`}
           >
             <div className="container py-4 flex flex-col gap-1">

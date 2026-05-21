@@ -154,8 +154,8 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        {/* Two Column Layout - Form Left (Sticky), Info + Map Right (Fixed Height) */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-start" ref={containerRef}>
+        {/* Two Column Layout - Form Left, Info + Map Right */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch" ref={containerRef}>
           {/* Form - Left Side - Sticky with Internal Scroll */}
           <motion.form
             ref={formRef}
@@ -163,7 +163,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20 h-fit"
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm h-full flex flex-col"
           >
             {/* Scrollable Form Content */}
             <div className="overflow-visible flex flex-col">
@@ -217,10 +217,10 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm md:sticky md:top-20 h-fit"
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm h-full flex flex-col"
           >
-            {/* Scrollable Content Container */}
-            <div ref={rightContentRef} className="overflow-y-auto scrollbar-hide flex flex-col" style={{ maxHeight: "648px" }}>
+            {/* Content Container */}
+            <div ref={rightContentRef} className="flex flex-col h-full flex-grow">
               {/* Contact Info Box - TOP */}
               <div className="flex flex-col p-6 md:p-8 flex-shrink-0">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
@@ -285,8 +285,8 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Google Maps - Scrolls into view */}
-              <div className="rounded-lg overflow-hidden shadow-sm border border-slate-200 mx-6 md:mx-8 mb-6 md:mb-8 flex-shrink-0 w-auto" style={{ height: "256px" }}>
+              {/* Google Maps - Flex grow to fill remaining space */}
+              <div className="rounded-lg overflow-hidden shadow-sm border border-slate-200 mx-6 md:mx-8 mb-6 md:mb-8 flex-grow w-auto min-h-[256px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6342.08172427285!2d-121.96206399999998!3d37.36521!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fca3b29bd16bd%3A0x1b7e4bbf55b3700b!2s2040%20Martin%20Ave%2C%20Santa%20Clara%2C%20CA%2095050%2C%20USA!5e0!3m2!1sen!2sin!4v1775548501571!5m2!1sen!2sin"
                   width="100%"

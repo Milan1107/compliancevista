@@ -249,10 +249,10 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`lg:hidden overflow-hidden backdrop-blur-xl border-t transition-all duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
+            className={`lg:hidden overflow-hidden backdrop-blur-xl transition-all duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
               scrolled
-                ? "mx-4 md:mx-8 mt-1 rounded-b-[2.5rem] bg-white border-white/40"
-                : "bg-white border-white/20"
+                ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem] bg-white border border-t-0 border-white/40"
+                : "bg-white border-b border-white/20"
             }`}
           >
             <div className="container py-4 flex flex-col gap-1">

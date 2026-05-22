@@ -25,12 +25,12 @@ const HeroSection = () => {
 
       <div className="container relative z-10 py-8 md:py-14">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
-              className="space-y-5"
+              className="space-y-5 flex flex-col items-center xl:items-start text-center xl:text-left"
             >
               {/* Badge */}
               <motion.div
@@ -43,12 +43,12 @@ const HeroSection = () => {
                 <span className="text-foreground/80 font-medium">Salesforce-Native Solution</span>
               </motion.div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.2] text-foreground space-y-1 sm:space-y-2 whitespace-nowrap">
-                <div className="text-[#37C643] flex flex-col">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-[1.2] text-foreground space-y-1 sm:space-y-2 whitespace-nowrap">
+                <div className="text-[#37C643] flex flex-col items-center xl:items-start">
                   <span>Assessments. Risk.</span>
                   <span>Compliance.</span>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center xl:items-start">
                   <span>All Automated.</span>
                   <span className="relative w-fit">
                     All inside Salesforce.
@@ -67,11 +67,11 @@ const HeroSection = () => {
                 </div>
               </h1>
 
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed mx-auto xl:mx-0">
                 ComplianceVista brings employee 360 reviews, vendor risk assessments, compliance checks, and audit workflows together in one Salesforce-native platform - powered by SurveyVista.
               </p>
 
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center xl:justify-start">
                 <button
                   onClick={() => setIsCalendlyOpen(true)}
                   className="group relative bg-[#37C643] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-lg hover:shadow-[#37C643]/40 transition-all duration-300 hover:-translate-y-1 text-center text-sm sm:text-base"
@@ -89,7 +89,7 @@ const HeroSection = () => {
                 </a>
               </div>
 
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center xl:justify-start">
                 {["100% Native Salesforce", "Enterprise Security", "Real-time Tracking"].map((t, i) => (
                   <span key={i} className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium text-muted-foreground glass rounded-full px-2 sm:px-3 py-1 sm:py-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -110,7 +110,7 @@ const HeroSection = () => {
                 {/* Background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl scale-110" />
 
-                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[24rem] h-56 sm:h-64 md:h-72 lg:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
+                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[24rem] h-56 sm:h-64 md:h-72 xl:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
                   <img
                     src="/company-images/cv-hero-new.webp"
                     alt="ComplianceVista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"

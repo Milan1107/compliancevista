@@ -36,15 +36,15 @@ const CalendlyModal = ({ isOpen, onClose }: CalendlyModalProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4 lg:p-12"
+          className="fixed inset-0 bg-black/50 backdrop-blur-none sm:backdrop-blur-sm z-[100] flex items-center justify-center p-4 lg:p-12"
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-[1060px] h-[700px] max-h-full relative flex items-center justify-center"
+            className="w-full max-w-[1060px] h-[700px] max-h-full relative flex items-center justify-center pointer-events-auto"
           >
             {/* Close Button styling matching typical external modal close buttons */}
             <button
@@ -65,7 +65,7 @@ const CalendlyModal = ({ isOpen, onClose }: CalendlyModalProps) => {
             )}
 
             {/* Scrollable Calendar Container */}
-            <div className="w-full h-full overflow-hidden bg-transparent">
+            <div className="w-full h-full overflow-y-auto bg-white rounded-2xl shadow-lg" style={{ WebkitOverflowScrolling: "touch" }}>
               <iframe
                 src={`${CALENDLY_URL}?embed_domain=${window.location.hostname}&embed_type=Inline`}
                 width="100%"
@@ -73,8 +73,8 @@ const CalendlyModal = ({ isOpen, onClose }: CalendlyModalProps) => {
                 frameBorder="0"
                 title="Schedule a demo"
                 allowFullScreen
-                scrolling="no"
-                style={{ display: "block" }}
+                scrolling="yes"
+                style={{ display: "block", minHeight: "580px" }}
               />
             </div>
           </motion.div>

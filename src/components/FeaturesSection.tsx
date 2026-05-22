@@ -126,12 +126,12 @@ const FeaturesSection = () => {
 								initial={{ opacity: 0, scale: 0.95, y: 20 }}
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
-								className="group relative h-80"
+								className="group relative h-fit"
 							>
-								<div className="card-hover-primary flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
+								<div className="card-hover-primary flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-fit relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
-									<div className="flex items-center gap-4 mb-3 flex-row text-left">
+									<div className="flex items-center gap-4 mb-2 flex-row text-left">
 										<motion.div
 											className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
 										>
@@ -150,8 +150,8 @@ const FeaturesSection = () => {
 									</motion.p>
 
 									{/* Benefits Section */}
-									<motion.div className="mt-2">
-										<div className="space-y-1.5">
+									<motion.div className="mt-1">
+										<div className="space-y-1">
 											{feature?.benefits && feature.benefits.length > 0 ? (
 												feature.benefits.map((benefit, bidx) => (
 													<motion.div

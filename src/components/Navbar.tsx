@@ -147,10 +147,14 @@ const Navbar = () => {
   const handleLogoClick = () => {
     setMobileOpen(false);
     if (isIndependentPage) {
-      navigate("/");
+      navigate("/", { replace: false });
+      // Ensure scroll to top when navigating to home page
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 300);
     } else {
-      setTimeout(() => setMobileOpen(false), 150);
-      handleClick("#home");
+      // Already on home page, scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 

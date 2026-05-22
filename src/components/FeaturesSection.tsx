@@ -193,7 +193,8 @@ const FeaturesSection = () => {
 									key={index}
 									onClick={() => setActiveIndex(index * 2)}
 									aria-label={`Go to features group ${index + 1}`}
-									className={`transition-all duration-300 rounded-full relative ${
+									style={{ minHeight: 'unset' }}
+									className={`transition-all duration-300 rounded-full relative min-h-0 ${
 										carouselIndex === index
 											? "bg-[#37C643] w-5 md:w-6 h-2 md:h-2.5"
 											: "bg-slate-300 w-2 md:w-2.5 h-2 md:h-2.5 hover:bg-slate-400"

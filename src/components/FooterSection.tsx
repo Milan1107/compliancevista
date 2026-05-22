@@ -53,7 +53,7 @@ const FooterSection = () => {
 
 
           {/* Quick Links - Center (Col 3) */}
-          <div className="flex flex-col md:items-center lg:items-center md:col-span-1 lg:col-span-1 col-span-1">
+          <div className="flex flex-col md:items-start lg:items-center md:col-span-1 lg:col-span-1 col-span-1">
             <div className="w-fit">
               <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
@@ -133,7 +133,7 @@ const FooterSection = () => {
 
         <div className="border-t border-navy-foreground/10 py-3 flex flex-col gap-2 sm:gap-3 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-navy-foreground/60 order-2 md:order-1">
-            © 2026 Ardira Corporation. All Rights Reserved.
+            © {currentYear} Ardira Corporation. All Rights Reserved.
           </p>
           <div className="flex gap-4 sm:gap-6 text-[10px] sm:text-xs order-1 md:order-2">
             <Link to="/terms-of-use" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">

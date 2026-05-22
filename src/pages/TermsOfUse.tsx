@@ -38,40 +38,40 @@ const TermsOfUse = () => {
             </div>
 
             {/* Content Sections */}
-            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-left">
+            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-sm md:text-base text-left md:text-justify">
               <section className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The website located at <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.
                 </p>
               </section>
 
               <section className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed text-left">
                   By accessing, browsing, submitting information to and/or using the Website, you agree and acknowledge on your own behalf (referred to throughout the Terms as "you") that you have read, understand and agree to be bound by these Terms and to comply with all applicable laws including, without limitation, all federal, state and local tax and tariff laws, regulations, and/or directives. If you do not agree to the Terms, please do not use the Website.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Purpose of the Website</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The Website are provided solely for informational purposes and the purposes of enabling communication between you and the Company. The information provided is intended to be general in nature and does not necessarily address all the terms, exclusions, and conditions applicable to our products and services.
                 </p>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   We do not warrant the accuracy, completeness, or usefulness of this information at any particular time. Any reliance you place on such information is strictly at your own risk. The Company disclaims all liability and responsibility arising from any reliance placed on such content by you or any other visitor to our Website, or by anyone who may be informed of any of its contents. Any information you provide or that is collected by the Company through the Website shall be handled in accordance with the Website's <a href="https://compliance-quest-page.vercel.app/privacy-policy" style={{ color: '#37C643' }} className="hover:underline">Privacy Policy</a>, which is hereby incorporated by reference.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Use of the Website</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The Company grants you a non-exclusive right to access and use the Website and the data, material, content or information herein (collectively, the "Content") solely for your personal use. Your right to access and use the Website shall be limited to non-commercial purposes unless you are otherwise expressly authorized by the Company to use the Website for commercial purposes. You agree to use the Website only for lawful purposes, comply with all rules governing any transactions on and through the Website and comply with applicable laws.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Prohibited Uses</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3 text-sm md:text-base">You agree that you will not:</p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed mb-3 text-sm md:text-base text-left">You agree that you will not:</p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-sm md:text-base text-left">
                   <li>Use the Website in any manner that could damage, disable, overburden, or impair the Website or interfere with any other party's use and enjoyment of them;</li>
                   <li>Attempt to gain unauthorized access to any Website account, computer systems or networks associated with the Company or the Website;</li>
                   <li>Obtain or attempt to obtain any materials or information through the Website by any means not intentionally made available or provided by the Company;</li>
@@ -84,14 +84,14 @@ const TermsOfUse = () => {
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Third Party Sites</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The Website may contain links to Website controlled or operated by persons and companies other than the Company ("Linked Sites"). Linked Sites are not under the control of the Company, and the Company is not responsible for the contents of any Linked Site, including without limitation any link contained on a Linked Site, or any changes or updates to a Linked Site. The Company is not responsible if the Linked Site is not working correctly or for any viruses, malware, or other harms resulting from your use of a Linked Site. The Company is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement by the Company of the site or any association with its operators. You are responsible for viewing and abiding by the privacy policies and terms of use posted on the Linked Sites. You are solely responsible for any dealings with third parties who support the Company or are identified in the Website, including any delivery of and payment for goods and services.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Intellectual Property Notices</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The Website and Content are protected by copyrights, trademarks, or are subject to other proprietary rights. Accordingly, you are not permitted to use the Website or Content in any manner, except as expressly permitted by the Company in these Terms. The Website or Content may not be copied, reproduced, modified, published, uploaded, posted, transmitted, performed, or distributed in any way, and you agree not to modify, rent, lease, loan, sell, distribute, transmit, broadcast, or create derivatives with the express written consent of the Company or applicable owner.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">

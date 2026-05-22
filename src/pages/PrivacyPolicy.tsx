@@ -25,10 +25,10 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* Content Sections */}
-            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-base text-left">
+            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-sm md:text-base text-left md:text-justify">
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Privacy Notice</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The website located at <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista," "the Company," "we," "us," and "our"). ComplianceVista respects your privacy and is committed to protecting your privacy through our compliance with this website privacy policy (the "Policy"). This Policy should be read in conjunction with our website{" "}
                   <a href="/terms-of-use" style={{ color: '#37C643' }} className="hover:underline">
                     Terms of Use
@@ -39,28 +39,28 @@ const PrivacyPolicy = () => {
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">This Policy Describes:</h2>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-sm md:text-base">
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-sm md:text-base text-left">
                   <li>The types of information we collect from you or that you may provide when you visit our website available at: <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">compliancevista.com</a> ("our Website")</li>
                   <li>Our practices for collecting, using, maintaining, protecting, and disclosing that information</li>
                 </ul>
-                <p className="text-muted-foreground leading-relaxed mt-4">
+                <p className="text-muted-foreground leading-relaxed mt-4 text-left">
                   Please read this Policy carefully to understand our practices regarding your information and how we will treat it. If you do not agree with our policies and practices, then please do not use our Website. By using our Website, you agree to the terms of this Policy. This Policy may change from time to time (see below, "Changes to this Policy"). Your continued use of our Website after we make changes is deemed to be acceptance of those changes, so please check the Policy periodically for updates.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">What We Collect and How We Collect It</h2>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   To ensure that we provide you with the best possible experience, we will store, use, and share information about you in accordance with this Policy.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Information You Provide to Us</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3 text-sm md:text-base">
+                <p className="text-muted-foreground leading-relaxed mb-3 text-sm md:text-base text-left">
                   Personal Information is any information that can be used to individually identify you from a larger group, such as data including, but not limited to, your:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-left">
                   <li>First and last name</li>
                   <li>Email address</li>
                   <li>Telephone number</li>
@@ -71,14 +71,14 @@ const PrivacyPolicy = () => {
                   <li>Job role (e.g., Finance, Human Resources, Information Technology, etc.)</li>
                   <li>Comments or messages provided in free text boxes</li>
                 </ul>
-                <p className="text-muted-foreground leading-relaxed mt-4">
+                <p className="text-muted-foreground leading-relaxed mt-4 text-left">
                   When you provide us Personal Information, we may combine that Personal Information from other data we have collected about you to learn more about you and to provide additional services. For example, your Personal Information may be included to update user profiles, provide services to follow-up on your prior questions or requests, and supplement existing marketing and sales promotional lists.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">You may provide us Personal Information when you:</h2>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground text-left">
                   <li>Request information</li>
                   <li>Provide requested services</li>
                   <li>Update your user profile</li>
@@ -87,14 +87,14 @@ const PrivacyPolicy = () => {
                   <li>Subscribe to our emails</li>
                   <li>Register yourself with our Website</li>
                 </ul>
-                <p className="text-muted-foreground leading-relaxed mt-4">
+                <p className="text-muted-foreground leading-relaxed mt-4 text-left">
                   The information that you provide in each case will vary. In some cases, we may ask you to create a username and password that should only be known to you.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Automated Information Collection</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3">
+                <p className="text-muted-foreground leading-relaxed mb-3 text-left">
                   In addition to the information that you provide to us, we may also collect information about you during your visit to our Website. We collect this information using automated tools that are detailed below. These tools may collect information about your behavior and your computer system, such as your internet address (IP Address), the pages you have viewed, and the actions you have taken while using our Website. Some of the tools we use to automatically collect information about you may include:
                 </p>
 

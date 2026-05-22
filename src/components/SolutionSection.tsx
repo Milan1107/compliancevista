@@ -111,7 +111,7 @@ const SolutionSection = () => {
           </div>
 
           {/* Text */}
-          <div className="w-full lg:w-1/2 flex flex-col h-[400px] sm:h-[320px] lg:h-[320px]">
+          <div className="w-full lg:w-1/2 flex flex-col h-auto lg:h-80">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -119,11 +119,11 @@ const SolutionSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-full flex flex-col shadow-sm"
+                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 flex flex-col shadow-sm"
               >
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>
-                <ul className="space-y-2 md:space-y-3">
+                <ul className="space-y-2 md:space-y-3 mt-auto">
                   {active.benefits.map((b, j) => (
                     <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">
                       <div className="w-5 h-5 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">

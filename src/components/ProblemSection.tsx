@@ -74,11 +74,9 @@ const ProblemSection = () => (
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ delay: i * 0.1 }}
-						className="group relative"
+						className="group relative h-80"
 					>
-					<div className={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm transition-all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${
-						i % 2 === 1 ? '' : 'card-hover-primary'
-					}`}>
+					<div className={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm transition-all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) card-hover-primary flex flex-col`}>
 						<div
 							className="card-icon w-12 h-12 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 mb-4 transition-transform transform-none"
 						>

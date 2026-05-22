@@ -35,10 +35,19 @@ const ContactSection = () => {
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = "Name is required";
-    if (!form.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Invalid email";
-    if (!form.phone.trim()) e.phone = "Phone is required";
-    else if (!/^[\d\s\-+()]+$/.test(form.phone)) e.phone = "Invalid phone number";
+    
+    if (!form.email.trim()) {
+      e.email = "Email is required";
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.email)) {
+      e.email = "Please enter a valid email address (e.g. name@company.com)";
+    }
+    
+    if (!form.phone.trim()) {
+      e.phone = "Phone number is required";
+    } else if (!/^\d{7,15}$/.test(form.phone)) {
+      e.phone = "Please enter a valid phone number (7 to 15 digits)";
+    }
+    
     if (!form.message.trim()) e.message = "Message is required";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -148,11 +157,21 @@ const ContactSection = () => {
                   {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Phone <span className="text-red-500">*</span></label>
-                  <input type="tel" value={form.phone} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClass("phone")} placeholder="Enter your phone number" />
-                  {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
-                </div>
+                 <div>
+                   <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Phone <span className="text-red-500">*</span></label>
+                   <input 
+                     type="tel" 
+                     value={form.phone} 
+                     onFocus={loadRecaptcha} 
+                     onChange={(e) => {
+                       const numbersOnly = e.target.value.replace(/[^\d]/g, "");
+                       setForm({ ...form, phone: numbersOnly });
+                     }} 
+                     className={inputClass("phone")} 
+                     placeholder="Enter your phone number (digits only)" 
+                   />
+                   {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
+                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Your Message</label>

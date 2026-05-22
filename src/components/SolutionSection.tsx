@@ -111,7 +111,7 @@ const SolutionSection = () => {
           </div>
 
           {/* Text */}
-          <div className="w-full lg:w-1/2 flex flex-col h-auto lg:h-80">
+          <div className="w-full lg:w-1/2 flex flex-col h-[280px] sm:h-64 md:h-72 lg:h-[320px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -119,17 +119,17 @@ const SolutionSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 flex flex-col shadow-sm"
+                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 flex flex-col shadow-sm h-full overflow-hidden"
               >
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>
-                <ul className="space-y-2 md:space-y-3 mt-auto">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643] line-clamp-2">{active.title}</h3>
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 line-clamp-3">{active.desc}</p>
+                <ul className="space-y-1 md:space-y-2 mt-auto overflow-y-auto">
                   {active.benefits.map((b, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">
-                      <div className="w-5 h-5 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-3.5 h-3.5 text-[#37C643]" />
+                    <li key={j} className="flex items-start gap-2 text-xs md:text-sm text-slate-700">
+                      <div className="w-4 h-4 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <CheckCircle className="w-3 h-3 text-[#37C643]" />
                       </div>
-                      {b}
+                      <span className="line-clamp-2">{b}</span>
                     </li>
                   ))}
                 </ul>

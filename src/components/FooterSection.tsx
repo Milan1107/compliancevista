@@ -16,43 +16,44 @@ const FooterSection = () => {
   };
 
   return (
-  <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-1">
+  <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-4">
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-    <div className="container relative pb-0">
-      <div className="container pt-4 sm:pt-6 pb-0">
-        {/* Mobile: Logo and tagline at top */}
-        <div className="md:hidden flex flex-col items-center text-center mb-8 sm:mb-10">
+    <div className="container relative">
+      {/* Mobile: Logo and tagline at top - centered */}
+      <div className="md:hidden flex flex-col items-center text-center mb-8 sm:mb-10">
+        <button 
+          onClick={() => navigateToSection('home')} 
+          aria-label="ComplianceVista - Return to Home"
+          className="flex items-center justify-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
+        >
+          <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
+        </button>
+        <p className="text-xs sm:text-sm text-navy-foreground/80 leading-relaxed">
+          Enterprise governance simplified. Salesforce-native compliance by Ardira.
+        </p>
+      </div>
+
+      {/* Desktop: Logo left, Quick Links and Contact Info together on right */}
+      <div className="hidden md:flex gap-12 lg:gap-16 mb-8 sm:mb-10 items-start justify-between">
+        {/* Logo and description - Left */}
+        <div className="flex flex-col items-start flex-shrink-0">
           <button 
             onClick={() => navigateToSection('home')} 
             aria-label="ComplianceVista - Return to Home"
-            className="flex items-center justify-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
+            className="flex items-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
           >
             <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
           </button>
-          <p className="text-xs sm:text-sm text-navy-foreground/80 leading-relaxed">
+          <p className="text-sm text-navy-foreground/80 text-left leading-relaxed max-w-xs">
             Enterprise governance simplified. Salesforce-native compliance by Ardira.
           </p>
         </div>
 
-        {/* Desktop: Three column layout - Logo left, Quick Links center, Contact right */}
-        <div className="hidden md:grid grid-cols-3 gap-12 lg:gap-16 mb-8 sm:mb-10">
-          {/* Logo and description - Left */}
-          <div className="flex flex-col items-start">
-            <button 
-              onClick={() => navigateToSection('home')} 
-              aria-label="ComplianceVista - Return to Home"
-              className="flex items-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
-            >
-              <img src={logo} alt="ComplianceVista" width={180} height={40} className="h-8 sm:h-10 w-auto" />
-            </button>
-            <p className="text-sm text-navy-foreground/80 text-left leading-relaxed">
-              Enterprise governance simplified. Salesforce-native compliance by Ardira.
-            </p>
-          </div>
-
-          {/* Quick Links - Center */}
-          <div className="flex flex-col items-start">
+        {/* Quick Links and Contact Info Side by Side - Right */}
+        <div className="flex gap-16 lg:gap-24">
+          {/* Quick Links */}
+          <div className="flex flex-col items-start -ml-6">
             <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Quick Links</h3>
             <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
               <li>
@@ -83,7 +84,7 @@ const FooterSection = () => {
             </ul>
           </div>
 
-          {/* Contact Info - Right */}
+          {/* Contact Info - Beside Quick Links */}
           <div className="flex flex-col items-start">
             <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Contact Info</h3>
             <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
@@ -98,7 +99,7 @@ const FooterSection = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="Visit www.compliancevista.com" 
-                  className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all"
+                  className="text-navy-foreground/80 hover:text-primary transition-colors duration-300"
                 >
                   www.compliancevista.com
                 </a>
@@ -108,7 +109,7 @@ const FooterSection = () => {
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <a href="mailto:info@ardira.com" aria-label="Email info at info@ardira.com" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all">
+                <a href="mailto:info@ardira.com" aria-label="Email info at info@ardira.com" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
                   info@ardira.com
                 </a>
               </li>
@@ -123,74 +124,94 @@ const FooterSection = () => {
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Mobile: Two column layout for Quick Links and Contact Info */}
-        <div className="md:hidden grid grid-cols-2 gap-6 mb-8 sm:mb-10">
-          {/* Quick Links - Mobile */}
-          <div className="flex flex-col items-start">
-            <h3 className="font-bold text-white mb-3 text-xs">Quick Links</h3>
-            <ul className="space-y-1.5 text-xs">
-              <li>
-                <button onClick={() => navigateToSection('overview')} aria-label="Navigate to Overview section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
-                  Overview
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateToSection('features')} aria-label="Navigate to Features section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
-                  Features
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateToSection('benefits')} aria-label="Navigate to Benefits section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
-                  Benefits
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateToSection('use-cases')} aria-label="Navigate to Use Cases section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
-                  Use Cases
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info - Mobile */}
-          <div className="flex flex-col items-start">
-            <h3 className="font-bold text-white mb-3 text-xs">Contact Info</h3>
-            <ul className="space-y-1.5 text-xs">
-              <li>
-                <a 
-                  href="https://compliance-quest-page.vercel.app/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="Visit www.compliancevista.com" 
-                  className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all"
-                >
-                  www.compliancevista.com
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@ardira.com" aria-label="Email info at info@ardira.com" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all">
-                  info@ardira.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+16697776838" aria-label="Call us at 1.669.777.6838" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
-                  1.669.777.6838
-                </a>
-              </li>
-            </ul>
-          </div>
+      {/* Mobile: Two column layout for Quick Links and Contact Info */}
+      <div className="md:hidden grid grid-cols-2 gap-6 mb-8 sm:mb-10">
+        {/* Quick Links - Mobile */}
+        <div className="flex flex-col items-start pl-4">
+          <h3 className="font-bold text-white mb-3 text-xs">Quick Links</h3>
+          <ul className="space-y-1.5 text-xs">
+            <li>
+              <button onClick={() => navigateToSection('overview')} aria-label="Navigate to Overview section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
+                Overview
+              </button>
+            </li>
+            <li>
+              <button onClick={() => navigateToSection('features')} aria-label="Navigate to Features section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
+                Features
+              </button>
+            </li>
+            <li>
+              <button onClick={() => navigateToSection('benefits')} aria-label="Navigate to Benefits section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
+                Benefits
+              </button>
+            </li>
+            <li>
+              <button onClick={() => navigateToSection('use-cases')} aria-label="Navigate to Use Cases section" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">
+                Use Cases
+              </button>
+            </li>
+          </ul>
         </div>
 
-        {/* Bottom: Copyright and Legal Links */}
-        <div className="border-t border-navy-foreground/10 py-3 flex flex-col gap-2 sm:gap-3 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-navy-foreground/60 order-2 md:order-1">
-            © {currentYear} Ardira Corporation. All Rights Reserved.
-          </p>
-          <div className="flex gap-4 sm:gap-6 text-xs md:text-xs order-1 md:order-2">
+        {/* Contact Info - Mobile */}
+        <div className="flex flex-col items-start">
+          <h3 className="font-bold text-white mb-3 text-xs">Contact Info</h3>
+          <ul className="space-y-1.5 text-xs">
+            <li>
+              <a 
+                href="https://compliance-quest-page.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Visit www.compliancevista.com" 
+                className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all"
+              >
+                www.compliancevista.com
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@ardira.com" aria-label="Email info at info@ardira.com" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 break-all">
+                info@ardira.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+16697776838" aria-label="Call us at 1.669.777.6838" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
+                1.669.777.6838
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom: Copyright and Legal Links */}
+      <div className="border-t border-navy-foreground/10 py-4">
+        {/* Mobile: Centered layout */}
+        <div className="md:hidden flex flex-col items-center gap-2 sm:gap-3">
+          <div className="flex gap-2 sm:gap-4 text-xs justify-center">
             <Link to="/terms-of-use" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">
               Terms of Use
             </Link>
+            <span className="text-navy-foreground/40">|</span>
+            <Link to="/privacy-policy" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">
+              Privacy Policy
+            </Link>
+          </div>
+          <p className="text-xs text-navy-foreground/60">
+            © {currentYear} Ardira Corporation. All Rights Reserved.
+          </p>
+        </div>
+
+        {/* Desktop: Copyright left, Legal Links right */}
+        <div className="hidden md:flex items-center justify-between">
+          <p className="text-xs text-navy-foreground/60">
+            © {currentYear} Ardira Corporation. All Rights Reserved.
+          </p>
+          <div className="flex gap-2 sm:gap-4 text-xs md:text-sm">
+            <Link to="/terms-of-use" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">
+              Terms of Use
+            </Link>
+            <span className="text-navy-foreground/40">|</span>
             <Link to="/privacy-policy" className="text-navy-foreground/60 hover:text-primary transition-colors duration-300">
               Privacy Policy
             </Link>

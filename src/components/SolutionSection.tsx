@@ -87,7 +87,7 @@ const SolutionSection = () => {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Visual */}
-          <div className="w-full lg:w-1/2 flex justify-center items-center h-48 sm:h-64 md:h-72 lg:h-96">
+          <div className="w-full lg:w-1/2 flex justify-center items-center h-[280px] sm:h-64 md:h-72 lg:h-[320px]">
             <motion.div
               key={activeIndex}
               initial={{ opacity: 0 }}
@@ -108,13 +108,13 @@ const SolutionSection = () => {
           </div>
 
           {/* Text */}
-          <div className="w-full lg:w-1/2 flex flex-col h-[480px] sm:h-[400px] lg:h-96">
+          <div className="w-full lg:w-1/2 flex flex-col h-[400px] sm:h-[320px] lg:h-[320px]">
             <motion.div
               key={activeIndex}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-full flex flex-col justify-center shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-full flex flex-col shadow-sm"
             >
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
               <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>

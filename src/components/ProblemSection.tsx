@@ -74,7 +74,7 @@ const ProblemSection = () => (
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ delay: i * 0.1 }}
-						className="group relative h-80"
+						className="group relative"
 					>
 					<div className={`rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm transition-all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) card-hover-primary flex flex-col`}>
 						<div
@@ -87,7 +87,7 @@ const ProblemSection = () => (
 							<h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3">
 								{p.title}
 							</h3>
-							<p className="text-sm md:text-base text-slate-600 leading-relaxed">
+							<p className="text-sm md:text-base text-slate-600 leading-relaxed flex-1">
 								{p.desc}
 							</p>
 						</div>

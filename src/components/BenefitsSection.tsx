@@ -72,14 +72,9 @@ const BenefitsSection = () => {
           </p>
         </motion.div>
 
-        {/* Benefits Grid - 2 columns on tablet/ipad, 3 on desktop, 1 on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+        {/* Benefits Grid - Centered flex layout for desktop to handle 5 items nicely */}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {benefits.map((benefit, idx) => {
-            // Check if this is the last card and if total is odd
-            const isLastCard = idx === benefits.length - 1;
-            const isOddTotal = benefits.length % 2 === 1;
-            const shouldCenterLast = isLastCard && isOddTotal;
-            
             return (
               <motion.div
                 key={idx}
@@ -87,19 +82,14 @@ const BenefitsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className={`group relative ${
-                  shouldCenterLast 
-                    ? 'md:col-span-2 lg:col-span-1 flex justify-center' 
-                    : 'w-full'
-                }`}
+                className="group relative w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.33%-2rem)] flex"
               >
-                <div className={shouldCenterLast ? 'w-full md:max-w-[calc(50%-0.75rem)]' : 'w-full'}>
                 {/* Card */}
                 <div 
-                  className={`card-hover-primary relative rounded-2xl p-6 md:p-8 h-full overflow-hidden bg-white ${
+                  className={`card-hover-primary relative rounded-2xl p-6 md:p-8 h-full w-full overflow-hidden bg-white ${
                     idx === 1 
-                      ? 'border border-slate-200 shadow-lg' 
-                      : 'border border-slate-200 shadow-sm'
+                      ? 'border-2 border-[#37C643]/20 shadow-lg shadow-[#37C643]/5' 
+                      : 'border border-slate-200'
                   }`}
                   aria-label={`${benefit.title}: ${benefit.description}`}
                   role="article"
@@ -131,7 +121,6 @@ const BenefitsSection = () => {
                   </p>
 
 
-                </div>
                 </div>
               </motion.div>
             );

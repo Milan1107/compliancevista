@@ -31,7 +31,6 @@ const FooterSection = () => {
   return (
   <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-4">
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-
     <div className="container relative">
       {/* Mobile: Logo and tagline at top - centered */}
       <div className="md:hidden flex flex-col items-center text-center mb-8 sm:mb-10">

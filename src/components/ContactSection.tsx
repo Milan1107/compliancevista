@@ -17,60 +17,37 @@ const ContactSection = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const rightSideRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
-  const [isInContactSection, setIsInContactSection] = useState(false);
+  const [rightHeight, setRightHeight] = useState<number | undefined>(undefined);
 
+  // Sync right side height with form height
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current || !rightContentRef.current) return;
-
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const isInSection = containerRect.top < window.innerHeight && containerRect.bottom > 0;
-      setIsInContactSection(isInSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (!formRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setRightHeight(entry.contentRect.height);
+      }
+    });
+    observer.observe(formRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!isInContactSection || !rightContentRef.current) return;
-
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleWheel = (e: WheelEvent) => {
-      if (!rightContentRef.current) return;
-
-      const maxScroll = rightContentRef.current.scrollHeight - rightContentRef.current.clientHeight;
-      const currentScroll = rightContentRef.current.scrollTop;
-      const isScrollingDown = e.deltaY > 0;
-      const isScrollingUp = e.deltaY < 0;
-
-      // Check if we can still scroll in the right card
-      const canScrollDown = isScrollingDown && currentScroll < maxScroll;
-      const canScrollUp = isScrollingUp && currentScroll > 0;
-
-      // Only prevent default scroll if the card can scroll in that direction
-      if (canScrollDown || canScrollUp) {
-        e.preventDefault();
-        rightContentRef.current.scrollTop += e.deltaY;
-      }
-      // If card is at bottom and scrolling down, or at top and scrolling up, allow normal page scroll
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      clearTimeout(scrollTimeout);
-    };
-  }, [isInContactSection]);
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = "Name is required";
-    if (!form.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Invalid email";
-    if (!form.phone.trim()) e.phone = "Phone is required";
-    else if (!/^[\d\s\-+()]+$/.test(form.phone)) e.phone = "Invalid phone number";
+    
+    if (!form.email.trim()) {
+      e.email = "Email is required";
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.email)) {
+      e.email = "Please enter a valid email address (e.g. name@company.com)";
+    }
+    
+    if (!form.phone.trim()) {
+      e.phone = "Phone number is required";
+    } else if (!/^\d{7,15}$/.test(form.phone)) {
+      e.phone = "Please enter a valid phone number (7 to 15 digits)";
+    }
+    
     if (!form.message.trim()) e.message = "Message is required";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -155,47 +132,57 @@ const ContactSection = () => {
         </motion.div>
 
         {/* Two Column Layout - Form Left, Info + Map Right */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch" ref={containerRef}>
-          {/* Form - Left Side - Sticky with Internal Scroll */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-start" ref={containerRef}>
+          {/* Form - Left Side */}
           <motion.form
             ref={formRef}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm h-full flex flex-col"
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm flex flex-col"
           >
             {/* Scrollable Form Content */}
             <div className="overflow-visible flex flex-col">
-              <div className="space-y-4 md:space-y-5 p-6 md:p-8 flex flex-col flex-shrink-0">
+              <div className="space-y-3 md:space-y-4 p-5 md:p-6 flex flex-col flex-shrink-0">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Your Name <span className="text-red-500">*</span></label>
                   <input type="text" value={form.name} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass("name")} placeholder="John Doe" />
                   {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Email <span className="text-red-500">*</span></label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Your Email <span className="text-red-500">*</span></label>
                   <input type="email" value={form.email} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass("email")} placeholder="john@company.com" />
                   {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Phone <span className="text-red-500">*</span></label>
-                  <input type="tel" value={form.phone} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClass("phone")} placeholder="Enter your phone number" />
-                  {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
-                </div>
+                 <div>
+                   <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Phone <span className="text-red-500">*</span></label>
+                   <input 
+                     type="tel" 
+                     value={form.phone} 
+                     onFocus={loadRecaptcha} 
+                     onChange={(e) => {
+                       const numbersOnly = e.target.value.replace(/[^\d]/g, "");
+                       setForm({ ...form, phone: numbersOnly });
+                     }} 
+                     className={inputClass("phone")} 
+                     placeholder="Enter your phone number (digits only)" 
+                   />
+                   {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
+                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Your Message</label>
-                  <textarea value={form.message} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5} className={`${inputClass("message")} resize-none h-24 sm:h-32 md:h-40`} placeholder="Tell us about your compliance needs..." />
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">Your Message</label>
+                  <textarea value={form.message} onFocus={loadRecaptcha} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={3} className={`${inputClass("message")} resize-none h-20 sm:h-24 md:h-28`} placeholder="Tell us about your compliance needs..." />
                   {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#37C643] text-white py-3 sm:py-4 rounded-full font-semibold overflow-hidden shadow-md hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md text-sm sm:text-base"
+                  className="w-full bg-[#37C643] text-white py-2.5 sm:py-3 rounded-full font-semibold overflow-hidden shadow-md hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-md text-sm sm:text-base"
                 >
                   <Send className="w-4 h-4" />
                   {isSubmitting ? "Submitting..." : "Send"}
@@ -204,42 +191,41 @@ const ContactSection = () => {
               
 
                 {/* Privacy Commitment Notice */}
-                <p className="text-xs text-slate-500 text-center mt-4 leading-relaxed">
+                <p className="text-xs text-slate-500 text-center mt-2 leading-relaxed">
                   We're committed to your privacy. ComplianceVista uses the information you provide us to contact you about relevant content, products and services. You may unsubscribe from these communications at any time. For information, check out our <a href="/privacy-policy" className="text-[#37B44A] font-medium hover:underline transition-colors">Privacy Policy</a>.
                 </p>
               </div>
             </div>
           </motion.form>
 
-          {/* Right Side - Info + Map (Sticky with Internal Scroll) */}
+          {/* Right Side - Info + Map (Sticky) */}
           <motion.div
             ref={rightSideRef}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm h-full flex flex-col"
+            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm flex flex-col sticky top-24"
           >
-            {/* Content Container */}
-            <div ref={rightContentRef} className="flex flex-col h-full flex-grow">
-              {/* Contact Info Box - TOP */}
-              <div className="flex flex-col p-6 md:p-8 flex-shrink-0">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
+            <div ref={rightContentRef} className="flex flex-col overflow-y-auto scrollbar-hide" style={{ maxHeight: rightHeight ? `${rightHeight}px` : "calc(100vh - 7rem)" }}>
+              {/* Contact Info */}
+              <div className="flex flex-col p-5 md:p-6">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
                   Quick Contact
                 </h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6">
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   Get in touch with a representative to see a demo or simply learn more about the product.
                 </p>
 
-                <div className="space-y-3 md:space-y-4">
+                <div className="flex flex-col gap-2.5">
                   {/* Address */}
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=2040+Martin+Ave,+Santa+Clara,+CA+95050,+United+States"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
+                    className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-[#37C643]" />
+                    <div className="w-9 h-9 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-4 h-4 text-[#37C643]" />
                     </div>
                     <div className="text-sm leading-relaxed">
                       <p className="font-bold text-slate-900">2040 Martin Ave, Santa Clara, CA</p>
@@ -250,10 +236,10 @@ const ContactSection = () => {
                   {/* Phone */}
                   <a
                     href="tel:+16697776838"
-                    className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-[#37C643]" />
+                    <div className="w-9 h-9 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-[#37C643]" />
                     </div>
                     <span className="text-sm font-bold text-slate-900">1.669.777.6838</span>
                   </a>
@@ -261,10 +247,10 @@ const ContactSection = () => {
                   {/* Email */}
                   <a
                     href="mailto:info@ardira.com"
-                    className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-[#37C643]" />
+                    <div className="w-9 h-9 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-4 h-4 text-[#37C643]" />
                     </div>
                     <span className="text-sm font-bold text-slate-900">info@ardira.com</span>
                   </a>
@@ -272,9 +258,9 @@ const ContactSection = () => {
                   {/* Support Note */}
                   <a
                     href="mailto:support@ardira.com"
-                    className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-[#37C643] hover:bg-[#37C643]/5 transition-all duration-300 cursor-pointer no-underline"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-9 h-9 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
                       <span className="text-sm font-bold text-[#37C643]">?</span>
                     </div>
                     <div className="text-sm">
@@ -285,18 +271,17 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Google Maps - Flex grow to fill remaining space */}
-              <div className="rounded-lg overflow-hidden shadow-sm border border-slate-200 mx-6 md:mx-8 mb-6 md:mb-8 flex-grow w-auto min-h-[256px]">
+              {/* Google Maps */}
+              <div className="rounded-lg overflow-hidden border border-slate-200 mx-5 md:mx-6 mb-5 md:mb-6 relative h-[256px] flex-shrink-0">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6342.08172427285!2d-121.96206399999998!3d37.36521!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fca3b29bd16bd%3A0x1b7e4bbf55b3700b!2s2040%20Martin%20Ave%2C%20Santa%20Clara%2C%20CA%2095050%2C%20USA!5e0!3m2!1sen!2sin!4v1775548501571!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
+                  className="absolute inset-0 w-full h-full"
                   frameBorder="0"
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="ComplianceVista Office - Santa Clara, CA"
-                  style={{ border: "none", width: "100%", height: "100%" }}
+                  style={{ border: "none" }}
                 />
               </div>
             </div>

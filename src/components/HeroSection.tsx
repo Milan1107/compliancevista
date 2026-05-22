@@ -25,7 +25,7 @@ const HeroSection = () => {
 
       <div className="container relative z-10 py-8 md:py-14">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -103,13 +103,13 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="hidden md:flex justify-center"
+              className="flex justify-center"
             >
               <div className="relative">
                 {/* Background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl scale-110" />
 
-                <div className="relative w-full max-w-[24rem] h-64 md:h-72 lg:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
+                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[24rem] h-56 sm:h-64 md:h-72 lg:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
                   <img
                     src="/company-images/cv-hero-new.webp"
                     alt="ComplianceVista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"

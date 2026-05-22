@@ -82,11 +82,6 @@ const FooterSection = () => {
                     Contact Us
                   </button>
                 </li>
-                <li>
-                  <a href="https://resources.surveyvista.com/knowledge-base/compliancevista/user-guide" target="_blank" rel="noopener noreferrer" aria-label="Open User Guide resources" className="text-navy-foreground/80 hover:text-primary transition-colors duration-300">
-                    Resources
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

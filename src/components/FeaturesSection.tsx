@@ -128,7 +128,7 @@ const FeaturesSection = () => {
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
 								className="group relative"
 							>
-								<div className="card-hover-primary rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
+								<div className="card-hover-primary flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full min-h-[380px] md:min-h-[340px] relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
 									<div className="flex items-center gap-4 mb-3 flex-col sm:flex-row">

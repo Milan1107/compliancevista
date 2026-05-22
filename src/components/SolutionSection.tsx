@@ -93,7 +93,7 @@ const SolutionSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
-              className="relative w-full h-auto lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200"
+              className="relative w-full h-48 sm:h-64 md:h-72 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200"
             >
               <img
                 src={active.image}
@@ -114,7 +114,7 @@ const SolutionSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-auto lg:h-96 flex flex-col shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-auto min-h-[420px] sm:min-h-[360px] lg:h-96 flex flex-col shadow-sm"
             >
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
               <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>

@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* Content Sections */}
-            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-base text-justify">
+            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-base text-left">
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Privacy Notice</h2>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">

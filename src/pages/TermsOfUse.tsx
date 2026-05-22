@@ -38,7 +38,7 @@ const TermsOfUse = () => {
             </div>
 
             {/* Content Sections */}
-            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-justify">
+            <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-left">
               <section className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                   The website located at <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.

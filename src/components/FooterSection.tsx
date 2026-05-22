@@ -15,6 +15,19 @@ const FooterSection = () => {
     }
   };
 
+  const goToHome = () => {
+    if (window.location.pathname === '/') {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // If on another page, navigate to home and scroll to top
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+  };
+
   return (
   <footer className="relative overflow-hidden bg-navy text-navy-foreground pt-6 sm:pt-8 pb-4">
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
@@ -23,7 +36,7 @@ const FooterSection = () => {
       {/* Mobile: Logo and tagline at top - centered */}
       <div className="md:hidden flex flex-col items-center text-center mb-8 sm:mb-10">
         <button 
-          onClick={() => navigateToSection('home')} 
+          onClick={goToHome} 
           aria-label="ComplianceVista - Return to Home"
           className="flex items-center justify-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
         >
@@ -39,7 +52,7 @@ const FooterSection = () => {
         {/* Logo and description - Left */}
         <div className="flex flex-col items-start flex-shrink-0">
           <button 
-            onClick={() => navigateToSection('home')} 
+            onClick={goToHome} 
             aria-label="ComplianceVista - Return to Home"
             className="flex items-center gap-2.5 mb-4 hover:opacity-80 transition-opacity bg-none border-none cursor-pointer p-0"
           >

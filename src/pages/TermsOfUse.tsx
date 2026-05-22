@@ -21,7 +21,7 @@ const TermsOfUse = () => {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-16 bg-gradient-to-b from-surface-light to-background">
+      <main className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-16" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container max-w-4xl md:max-w-6xl px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -33,13 +33,14 @@ const TermsOfUse = () => {
             <div className="space-y-4 relative">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text">Terms of Use</h1>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: '#37C643' }}>Terms of Use</h1>
                 </div>
                 <a
                   href="https://surveyvista.com/ardira-appexchange-app-terms-and-conditions/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline font-semibold whitespace-normal md:whitespace-nowrap md:mt-2 text-sm md:text-base"
+                  style={{ color: '#37C643' }}
+                  className="hover:underline font-semibold whitespace-normal md:whitespace-nowrap md:mt-2 text-sm md:text-base"
                 >
                   Ardira AppExchange App Terms and Conditions
                 </a>
@@ -50,7 +51,7 @@ const TermsOfUse = () => {
             <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-justify">
               <section className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  The website located at www.compliancevista.com, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.
+                  The website located at <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.
                 </p>
               </section>
 
@@ -66,7 +67,7 @@ const TermsOfUse = () => {
                   The Website are provided solely for informational purposes and the purposes of enabling communication between you and the Company. The information provided is intended to be general in nature and does not necessarily address all the terms, exclusions, and conditions applicable to our products and services.
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  We do not warrant the accuracy, completeness, or usefulness of this information at any particular time. Any reliance you place on such information is strictly at your own risk. The Company disclaims all liability and responsibility arising from any reliance placed on such content by you or any other visitor to our Website, or by anyone who may be informed of any of its contents. Any information you provide or that is collected by the Company through the Website shall be handled in accordance with the Website's <a href="https://compliance-quest-page.vercel.app/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>, which is hereby incorporated by reference.
+                  We do not warrant the accuracy, completeness, or usefulness of this information at any particular time. Any reliance you place on such information is strictly at your own risk. The Company disclaims all liability and responsibility arising from any reliance placed on such content by you or any other visitor to our Website, or by anyone who may be informed of any of its contents. Any information you provide or that is collected by the Company through the Website shall be handled in accordance with the Website's <a href="https://compliance-quest-page.vercel.app/privacy-policy" style={{ color: '#37C643' }} className="hover:underline">Privacy Policy</a>, which is hereby incorporated by reference.
                 </p>
               </section>
 
@@ -108,7 +109,7 @@ const TermsOfUse = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Questions regarding the use of any intellectual property provided on the Website should be directed to{" "}
-                  <a href="mailto:legal@ardira.com" className="text-primary hover:underline">
+                  <a href="mailto:legal@ardira.com" style={{ color: '#37C643' }} className="hover:underline">
                     legal@ardira.com
                   </a>
                   .
@@ -194,12 +195,12 @@ const TermsOfUse = () => {
                   <p className="text-muted-foreground">2040 Martin Ave</p>
                   <p className="text-muted-foreground">Santa Clara, CA 95050</p>
                   <p className="text-muted-foreground">
-                    <a href="tel:16697776838" className="text-primary hover:underline">
+                    <a href="tel:16697776838" style={{ color: '#37C643' }} className="hover:underline">
                       1.669.777.6838
                     </a>
                   </p>
                   <p className="text-muted-foreground">
-                    <a href="mailto:legal@ardira.com" className="text-primary hover:underline">
+                    <a href="mailto:legal@ardira.com" style={{ color: '#37C643' }} className="hover:underline">
                       legal@ardira.com
                     </a>
                   </p>
@@ -218,7 +219,7 @@ const TermsOfUse = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300"
+            className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-40 w-12 h-12 rounded-full text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300" style={{ backgroundColor: '#37C643' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             title="Scroll to top"

@@ -187,7 +187,7 @@ const Navbar = () => {
             />
           </button>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -227,7 +227,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className={`md:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+            className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
               !scrolled
                 ? "bg-slate-100/50 text-slate-900 hover:bg-slate-200/50"
                 : isOverColoredSection
@@ -249,7 +249,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`md:hidden overflow-hidden backdrop-blur-xl border-t transition-all duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
+            className={`lg:hidden overflow-hidden backdrop-blur-xl border-t transition-all duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
               scrolled
                 ? "mx-4 md:mx-8 mt-1 rounded-b-[2.5rem] bg-white border-white/40"
                 : "bg-white border-white/20"

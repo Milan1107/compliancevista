@@ -174,7 +174,7 @@ const FeaturesSection = () => {
 					</div>
 
 					{/* Navigation Controls */}
-					<div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap mt-6 md:mt-8">
+					<div className="flex items-center justify-center gap-4 mt-6 md:mt-8">
 						{/* Previous Button */}
 						<motion.button
 							onClick={goToPrevious}

@@ -35,7 +35,7 @@ const FooterSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-0 mb-8 sm:mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 mb-8 sm:mb-10">
           {/* Company Info - Left (Col 1) - Desktop only */}
           <div className="hidden md:flex flex-col items-start md:col-span-1">
             <button 
@@ -51,10 +51,10 @@ const FooterSection = () => {
           </div>
 
           {/* Spacer (Col 2) */}
-          <div className="hidden md:block md:col-span-1"></div>
+          <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Quick Links - Center (Col 3) */}
-          <div className="flex flex-col md:items-center md:col-span-1 col-span-1">
+          <div className="flex flex-col md:items-center lg:items-center md:col-span-1 lg:col-span-1 col-span-1">
             <div className="w-fit">
               <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Quick Links</h3>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
@@ -93,10 +93,10 @@ const FooterSection = () => {
           </div>
 
           {/* Spacer (Col 4) */}
-          <div className="hidden md:block md:col-span-1"></div>
+          <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Contact Info - Right (Col 5) */}
-          <div className="flex flex-col md:items-end md:col-span-1 col-span-1 min-w-0">
+          <div className="flex flex-col md:items-start lg:items-end md:col-span-1 lg:col-span-1 col-span-1 min-w-0">
             <div className="w-full md:w-fit">
               <h3 className="font-bold text-white mb-4 sm:mb-6 text-sm sm:text-base">Contact Info</h3>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm">

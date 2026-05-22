@@ -145,13 +145,13 @@ const FeaturesSection = () => {
 									</div>
 
 									{/* Description Section */}
-									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-3 font-medium">
+									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-2 font-medium">
 										{feature.desc}
 									</motion.p>
 
 									{/* Benefits Section */}
-									<motion.div className="mt-auto">
-										<div className="space-y-2">
+									<motion.div className="mt-2">
+										<div className="space-y-1.5">
 											{feature?.benefits && feature.benefits.length > 0 ? (
 												feature.benefits.map((benefit, bidx) => (
 													<motion.div

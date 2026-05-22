@@ -95,23 +95,27 @@ const BenefitsSection = () => {
                   role="article"
                 >
 
-                  {/* Icon */}
-                  <div
-                    className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform relative z-10 transform-none ${
-                      idx === 1
-                        ? 'bg-[#37C643]/15 border border-[#37C643]/30'
-                        : 'bg-[#37C643]/10 border border-[#37C643]/20'
-                    }`}
-                  >
-                    <div className="text-[#37C643] flex items-center justify-center w-full h-full">
-                      <IconComponent iconType={benefit.icon} />
+                  {/* Icon and Title Wrapper */}
+                  <div className="flex flex-row items-center gap-4 mb-4 text-left">
+                    {/* Icon */}
+                    <div
+                      className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform relative z-10 transform-none ${
+                        idx === 1
+                          ? 'bg-[#37C643]/15 border border-[#37C643]/30'
+                          : 'bg-[#37C643]/10 border border-[#37C643]/20'
+                      }`}
+                    >
+                      <div className="text-[#37C643] flex items-center justify-center w-full h-full">
+                        <IconComponent iconType={benefit.icon} />
+                      </div>
                     </div>
+
+                    {/* Content */}
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 relative z-10 m-0 leading-tight block">
+                      {benefit.title}
+                    </h3>
                   </div>
 
-                  {/* Content */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10 -mt-2">
-                    {benefit.title}
-                  </h3>
                   <p className="text-sm md:text-base text-slate-600 leading-relaxed relative z-10">
                     {benefit.description}
                   </p>

@@ -1,5 +1,5 @@
 import { FileCheck, AlertTriangle, GitBranch, CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const solutions = [
@@ -88,47 +88,53 @@ const SolutionSection = () => {
         >
           {/* Visual */}
           <div className="w-full lg:w-1/2 flex justify-center items-center h-[280px] sm:h-64 md:h-72 lg:h-[320px]">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200"
-            >
-              <img
-                src={active.image}
-                alt={`ComplianceVista ${active.title} - ${active.desc.substring(0, 80)}...`}
-                loading="lazy"
-                decoding="async"
-                width={480}
-                height={384}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200"
+              >
+                <img
+                  src={active.image}
+                  alt={`ComplianceVista ${active.title} - ${active.desc.substring(0, 80)}...`}
+                  loading="lazy"
+                  decoding="async"
+                  width={480}
+                  height={384}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Text */}
           <div className="w-full lg:w-1/2 flex flex-col h-[400px] sm:h-[320px] lg:h-[320px]">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-full flex flex-col shadow-sm"
-            >
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>
-              <ul className="space-y-2 md:space-y-3">
-                {active.benefits.map((b, j) => (
-                  <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">
-                    <div className="w-5 h-5 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3.5 h-3.5 text-[#37C643]" />
-                    </div>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 space-y-2 md:space-y-3 h-full flex flex-col shadow-sm"
+              >
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#37C643]">{active.title}</h3>
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-1 mb-2">{active.desc}</p>
+                <ul className="space-y-2 md:space-y-3">
+                  {active.benefits.map((b, j) => (
+                    <li key={j} className="flex items-center gap-3 text-sm md:text-base text-slate-700">
+                      <div className="w-5 h-5 rounded-lg bg-[#37C643]/10 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#37C643]" />
+                      </div>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

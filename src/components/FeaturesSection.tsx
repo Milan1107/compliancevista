@@ -131,7 +131,7 @@ const FeaturesSection = () => {
 								<div className="card-hover-primary flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-full relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
-									<div className="flex items-center gap-4 mb-3 flex-col sm:flex-row">
+									<div className="flex items-center gap-4 mb-3 flex-row text-left">
 										<motion.div
 											className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
 										>

@@ -126,9 +126,9 @@ const FeaturesSection = () => {
 								initial={{ opacity: 0, scale: 0.95, y: 20 }}
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
-								className="group relative h-fit"
+								className="group relative h-full"
 							>
-								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-fit relative overflow-hidden shadow-sm">
+								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-[360px] sm:h-[320px] md:h-[380px] lg:h-[340px] xl:h-[320px] relative overflow-hidden shadow-sm">
 
 									{/* Icon and title */}
 									<div className="flex items-center gap-4 mb-2 flex-row text-left">

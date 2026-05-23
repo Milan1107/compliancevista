@@ -11,7 +11,6 @@ if (!rootElement) {
 
 try {
   createRoot(rootElement).render(<App />);
-  console.log("App mounted successfully");
 } catch (error) {
   console.error("Failed to mount app:", error);
   rootElement.innerHTML = `

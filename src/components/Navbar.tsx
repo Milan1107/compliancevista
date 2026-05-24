@@ -222,7 +222,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsCalendlyOpen(true)}
               aria-label="Book a product demo"
-              className={`ml-4 bg-[#37C643] text-white rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 hover:-translate-y-1 ${
+              className={`ml-4 bg-[#37C643] text-white rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-lg hover:shadow-[#37C643]/30 transition-all duration-300 ${
                 scrolled ? "px-5 py-2 text-xs" : "px-6 py-2.5 text-sm"
               }`}
             >

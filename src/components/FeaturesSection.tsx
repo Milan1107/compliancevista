@@ -123,7 +123,7 @@ const FeaturesSection = () => {
 								className="group relative h-full"
 							>
 								{/* ✅ Only mobile height changed: h-[300px] → h-[220px] */}
-								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-[220px] sm:h-[260px] md:h-[280px] lg:h-[260px] xl:h-[240px] relative overflow-hidden shadow-sm w-full">
+								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-7 h-[260px] md:h-[280px] lg:h-[260px] xl:h-[240px] relative overflow-hidden shadow-sm w-full justify-between">
 
 									<div className="flex items-center gap-4 mb-2 flex-row text-left">
 										<motion.div

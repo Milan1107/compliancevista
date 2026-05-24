@@ -34,19 +34,26 @@ const Navbar = () => {
 
       const finalCtaElement = document.getElementById("final-cta");
       const heroElement = document.getElementById("home");
+      const footerElement = document.querySelector("footer");
 
       let overColored = false;
       let buttonOverColored = false;
 
+      // Define the physical space occupied by the Navbar and the Button
+      const navbarBottom = 80; // Navbar is ~80px tall
+      const buttonTop = window.innerHeight - 72;
+      const buttonBottom = window.innerHeight - 24;
+
       if (finalCtaElement) {
-        const finalCtaRect = finalCtaElement.getBoundingClientRect();
-        // Keep it true all the way down through the footer since both are dark
-        if (finalCtaRect.top < 100) {
-          overColored = true;
-        }
-        if (finalCtaRect.top < window.innerHeight - 24) {
-          buttonOverColored = true;
-        }
+        const ctaRect = finalCtaElement.getBoundingClientRect();
+        if (ctaRect.top < navbarBottom && ctaRect.bottom > 0) overColored = true;
+        if (ctaRect.top < buttonBottom && ctaRect.bottom > buttonTop) buttonOverColored = true;
+      }
+
+      if (footerElement) {
+        const footerRect = footerElement.getBoundingClientRect();
+        if (footerRect.top < navbarBottom && footerRect.bottom > 0) overColored = true;
+        if (footerRect.top < buttonBottom && footerRect.bottom > buttonTop) buttonOverColored = true;
       }
 
       if (!overColored && heroElement && window.scrollY <= 50) {

@@ -171,8 +171,8 @@
   z-index: 30 !important;
 }
 
-/* Prevent horizontal overflow on mobile */
-html, body {
+/* Prevent horizontal overflow on mobile without breaking iOS Safari native scroll tracking */
+#root {
   overflow-x: hidden;
   max-width: 100vw;
 }

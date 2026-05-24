@@ -12,22 +12,18 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-primary/3 to-secondary/3 relative overflow-hidden px-4">
+    <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-4">
       {/* Background decorative elements */}
-      <motion.div 
-        className="absolute -top-40 -right-40 w-80 h-80 bg-secondary/8 rounded-full blur-3xl"
-        animate={{ 
-          x: [0, 30, -20, 0],
-          y: [0, -40, 20, 0]
-        }}
+      <motion.div
+        className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl"
+        style={{ backgroundColor: "rgba(55, 198, 67, 0.08)" }}
+        animate={{ x: [0, 30, -20, 0], y: [0, -40, 20, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
       />
-      <motion.div 
-        className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/8 rounded-full blur-3xl"
-        animate={{ 
-          x: [0, -30, 20, 0],
-          y: [0, 40, -20, 0]
-        }}
+      <motion.div
+        className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl"
+        style={{ backgroundColor: "rgba(55, 198, 67, 0.08)" }}
+        animate={{ x: [0, -30, 20, 0], y: [0, 40, -20, 0] }}
         transition={{ duration: 15, repeat: Infinity }}
       />
 
@@ -39,7 +35,8 @@ const NotFound = () => {
       >
         {/* 404 Number */}
         <motion.h1
-          className="text-7xl md:text-8xl font-bold gradient-text mb-4"
+          className="text-7xl md:text-8xl font-bold mb-4"
+          style={{ color: "#37C643" }}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 3, repeat: Infinity }}
         >
@@ -68,7 +65,19 @@ const NotFound = () => {
           {/* Back Button */}
           <motion.button
             onClick={() => navigate(-1)}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-foreground hover:border-primary/60 hover:bg-gradient-to-r hover:from-primary/20 hover:to-secondary/20 transition-all duration-300 font-medium"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg border text-foreground transition-all duration-300 font-medium"
+            style={{
+              backgroundColor: "rgba(55, 198, 67, 0.1)",
+              borderColor: "rgba(55, 198, 67, 0.3)",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(55, 198, 67, 0.2)";
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "#37C643";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "rgba(55, 198, 67, 0.1)";
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(55, 198, 67, 0.3)";
+            }}
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -79,7 +88,14 @@ const NotFound = () => {
           {/* Home Button */}
           <motion.button
             onClick={() => navigate("/")}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 font-medium"
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 font-medium text-black"
+            style={{ backgroundColor: "#37C643" }}
+            onMouseEnter={e =>
+              ((e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 24px rgba(55,198,67,0.4)")
+            }
+            onMouseLeave={e =>
+              ((e.currentTarget as HTMLButtonElement).style.boxShadow = "none")
+            }
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -95,7 +111,10 @@ const NotFound = () => {
           transition={{ delay: 0.6 }}
           className="mt-8 text-xs md:text-sm text-muted-foreground break-all"
         >
-          Requested path: <span className="font-mono text-primary">{location.pathname}</span>
+          Requested path:{" "}
+          <span className="font-mono" style={{ color: "#37C643" }}>
+            {location.pathname}
+          </span>
         </motion.p>
       </motion.div>
     </div>

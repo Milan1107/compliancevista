@@ -62,11 +62,9 @@ const IconComponent = ({ iconType }: { iconType: string }) => {
 const FeaturesSection = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
-	// Show 2 cards at a time, so carouselIndex goes from 0 to 2 (3 groups total)
 	const carouselIndex = Math.floor(activeIndex / 2);
 	const visibleFeatures = [features[activeIndex], features[activeIndex + 1]].filter(Boolean);
 
-	// Auto-carousel with 3-second interval, advancing by 2 each time
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setActiveIndex((prev) => {
@@ -90,12 +88,10 @@ const FeaturesSection = () => {
 
 	return (
 		<section id="features" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-emerald-50/40">
-			{/* Subtle accent decorations */}
 			<div className="absolute top-0 left-0 w-72 h-72 bg-green-100/20 rounded-full blur-3xl -z-10" />
 			<div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-100/25 rounded-full blur-3xl -z-10" />
 
 			<div className="container relative z-10 px-4 sm:px-6">
-				{/* Section Header */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -116,10 +112,8 @@ const FeaturesSection = () => {
 					</p>
 				</motion.div>
 
-				{/* Carousel Container - 2 Cards Display */}
 				<div className="max-w-6xl mx-auto">
-					{/* Features Grid - 2 cards side by side, full width on mobile */}
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10 items-stretch">
 						{visibleFeatures.map((feature, idx) => (
 							<motion.div
 								key={activeIndex + idx}
@@ -128,9 +122,9 @@ const FeaturesSection = () => {
 								transition={{ duration: 0.5, delay: idx * 0.1 }}
 								className="group relative h-full"
 							>
-								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-[360px] sm:h-[320px] md:h-[380px] lg:h-[340px] xl:h-[320px] relative overflow-hidden shadow-sm">
+								{/* ✅ Only mobile height changed: h-[300px] → h-[220px] */}
+								<div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 md:p-8 h-[220px] sm:h-[260px] md:h-[280px] lg:h-[260px] xl:h-[240px] relative overflow-hidden shadow-sm w-full">
 
-									{/* Icon and title */}
 									<div className="flex items-center gap-4 mb-2 flex-row text-left">
 										<motion.div
 											className="card-icon w-14 h-14 rounded-2xl bg-[#37C643]/10 border border-[#37C643]/20 flex items-center justify-center flex-shrink-0 transition-transform"
@@ -144,12 +138,10 @@ const FeaturesSection = () => {
 										</motion.h3>
 									</div>
 
-									{/* Description Section */}
 									<motion.p className="text-sm md:text-base text-slate-600 leading-relaxed mb-2 font-medium">
 										{feature.desc}
 									</motion.p>
 
-									{/* Benefits Section */}
 									<motion.div className="mt-1">
 										<div className="space-y-1">
 											{feature?.benefits && feature.benefits.length > 0 ? (
@@ -175,7 +167,6 @@ const FeaturesSection = () => {
 
 					{/* Navigation Controls */}
 					<div className="flex items-center justify-center gap-4 mt-6 md:mt-8">
-						{/* Previous Button */}
 						<motion.button
 							onClick={goToPrevious}
 							aria-label="Previous features"
@@ -186,7 +177,6 @@ const FeaturesSection = () => {
 							<ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-[#37C643]" />
 						</motion.button>
 
-						{/* Dots indicator - 3 groups for 6 cards shown 2 at a time */}
 						<div className="flex gap-1.5 md:gap-2">
 							{[0, 1, 2].map((index) => (
 								<motion.button
@@ -201,13 +191,11 @@ const FeaturesSection = () => {
 									}`}
 									whileHover={{ scale: 1.2 }}
 								>
-									{/* Invisible touch target expansion */}
 									<span className="absolute inset-[-8px] md:inset-[-12px]" aria-hidden="true" />
 								</motion.button>
 							))}
 						</div>
 
-						{/* Next Button */}
 						<motion.button
 							onClick={goToNext}
 							aria-label="Next features"

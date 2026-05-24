@@ -46,9 +46,55 @@ const BenefitsSection = () => {
     }
   ];
 
+  const cardClass = (idx: number) =>
+    `card-hover-primary relative rounded-2xl p-6 md:p-8 overflow-hidden bg-white flex flex-col ${
+      idx === 1
+        ? 'border-2 border-[#37C643]/20 shadow-lg shadow-[#37C643]/5'
+        : 'border border-slate-200'
+    }`;
+
+  const iconClass = (idx: number) =>
+    `card-icon w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform relative z-10 transform-none ${
+      idx === 1
+        ? 'bg-[#37C643]/15 border border-[#37C643]/30'
+        : 'bg-[#37C643]/10 border border-[#37C643]/20'
+    }`;
+
+  const renderCard = (benefit: typeof benefits[0], idx: number) => (
+    <motion.div
+      key={idx}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: idx * 0.1 }}
+      viewport={{ once: true }}
+      // ✅ Fixed width on every breakpoint — same as one grid column
+      className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-22px)] flex-shrink-0"
+    >
+      <div
+        className={cardClass(idx)}
+        style={{ height: '100%' }}
+        aria-label={`${benefit.title}: ${benefit.description}`}
+        role="article"
+      >
+        <div className="flex flex-row items-center gap-4 mb-4 text-left">
+          <div className={iconClass(idx)}>
+            <div className="text-[#37C643] flex items-center justify-center w-full h-full">
+              <IconComponent iconType={benefit.icon} />
+            </div>
+          </div>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 relative z-10 m-0 leading-tight block">
+            {benefit.title}
+          </h3>
+        </div>
+        <p className="text-sm md:text-base text-slate-600 leading-relaxed relative z-10 flex-grow">
+          {benefit.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+
   return (
     <section id="benefits" className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-br from-slate-50 via-slate-100/50 to-slate-50">
-      {/* Subtle accent decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-slate-200/20 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-slate-300/15 rounded-full blur-3xl -z-10" />
 
@@ -72,59 +118,23 @@ const BenefitsSection = () => {
           </p>
         </motion.div>
 
-        {/* Benefits Grid - Centered flex layout for desktop to handle 5 items nicely */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
-          {benefits.map((benefit, idx) => {
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.33%-2rem)] flex"
-              >
-                {/* Card */}
-                <div 
-                  className={`card-hover-primary relative rounded-2xl p-6 md:p-8 h-full w-full overflow-hidden bg-white ${
-                    idx === 1 
-                      ? 'border-2 border-[#37C643]/20 shadow-lg shadow-[#37C643]/5' 
-                      : 'border border-slate-200'
-                  }`}
-                  aria-label={`${benefit.title}: ${benefit.description}`}
-                  role="article"
-                >
-
-                  {/* Icon and Title Wrapper */}
-                  <div className="flex flex-row items-center gap-4 mb-4 text-left">
-                    {/* Icon */}
-                    <div
-                      className={`card-icon w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform relative z-10 transform-none ${
-                        idx === 1
-                          ? 'bg-[#37C643]/15 border border-[#37C643]/30'
-                          : 'bg-[#37C643]/10 border border-[#37C643]/20'
-                      }`}
-                    >
-                      <div className="text-[#37C643] flex items-center justify-center w-full h-full">
-                        <IconComponent iconType={benefit.icon} />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 relative z-10 m-0 leading-tight block">
-                      {benefit.title}
-                    </h3>
-                  </div>
-
-                  <p className="text-sm md:text-base text-slate-600 leading-relaxed relative z-10">
-                    {benefit.description}
-                  </p>
-
-
-                </div>
-              </motion.div>
-            );
-          })}
+        {/*
+          ✅ Single flex container, wrap enabled, justify-center on all breakpoints.
+          - Mobile:  1 card per row (w-full), all centered
+          - Tablet:  2 cards per row (w-[calc(50%-12px)]), last card centered alone
+          - Desktop: 3 cards per row (w-[calc(33.333%-22px)]), last 2 cards centered
+          Because justify-center is always on, any "orphan" cards in the last
+          row automatically center themselves — no splitting needed.
+          All cards share the SAME fixed width so they are always identical in size.
+          Height is uniform because every card is flex-col and the tallest card
+          in the row dictates row height — and since all cards are the same width
+          they reflow identically.
+        */}
+        <div
+          className="flex flex-wrap justify-center max-w-7xl mx-auto"
+          style={{ gap: '24px' }}
+        >
+          {benefits.map((benefit, idx) => renderCard(benefit, idx))}
         </div>
       </div>
     </section>

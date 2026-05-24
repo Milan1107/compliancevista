@@ -14,7 +14,7 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-[85dvh] md:min-h-[100dvh] pt-20 md:pt-0 flex items-center overflow-hidden bg-gradient-to-br from-white via-[#37C643]/5 to-[#37C643]/8">
       {/* Subtle greenish background overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#37C643]/3 to-[#37C643]/4" />
-      
+
       {/* Floating orbs */}
       <div className="absolute top-20 right-[15%] w-72 h-72 bg-primary/10 rounded-full blur-3xl float-animation" />
       <div className="absolute bottom-20 left-[10%] w-96 h-96 bg-secondary/8 rounded-full blur-3xl float-animation" style={{ animationDelay: "3s" }} />
@@ -106,18 +106,18 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="flex justify-center"
             >
-              <div className="relative">
+              <div className="relative pb-8">
                 {/* Background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl scale-110" />
 
-                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[24rem] h-56 sm:h-64 md:h-72 xl:h-96 rounded-3xl glass-strong overflow-hidden float-animation shadow-2xl shadow-primary/20 border border-white/30">
+                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[26rem] xl:max-w-[30rem] h-64 sm:h-72 md:h-80 xl:h-96 rounded-3xl glass-strong shadow-2xl shadow-primary/20 border border-white/30 float-animation">
                   <img
                     src="/company-images/cv-hero-new.webp"
                     alt="ComplianceVista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"
                     fetchPriority="high"
-                    width={384}
+                    width={480}
                     height={384}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
@@ -126,7 +126,7 @@ const HeroSection = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2 }}
-                  className="absolute -bottom-4 -left-4 glass rounded-2xl px-4 py-3 flex items-center gap-2 glow-primary float-animation"
+                  className="absolute bottom-0 -left-4 glass rounded-2xl px-4 py-3 flex items-center gap-2 glow-primary float-animation"
                 >
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                     <span className="text-primary-foreground text-xs font-bold">✓</span>

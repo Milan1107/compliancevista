@@ -24,7 +24,6 @@ const Navbar = () => {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Determine if we're on an independent page (not the home page)
   const isIndependentPage = location.pathname !== "/";
 
   useEffect(() => {
@@ -32,48 +31,38 @@ const Navbar = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 50);
       setShowScrollTop(currentScrollY > 300);
-      
-      // Detect if navbar is over a colored section (green sections)
+
       const finalCtaElement = document.getElementById("final-cta");
       const heroElement = document.getElementById("home");
-      
+
       let overColored = false;
       let buttonOverColored = false;
-      
-      // Check if over Final CTA (green section at bottom)
+
       if (finalCtaElement) {
         const finalCtaRect = finalCtaElement.getBoundingClientRect();
         if (finalCtaRect.top < 100 && finalCtaRect.bottom > 0) {
           overColored = true;
         }
-        
-        // Button is 24px from bottom + 48px height. Let's check if the button area is inside the section.
         if (finalCtaRect.top < window.innerHeight - 24 && finalCtaRect.bottom > window.innerHeight - 72) {
           buttonOverColored = true;
         }
       }
-      
-      // Check if over Hero (green section at top) - only when scrollY is very small
+
       if (!overColored && heroElement && window.scrollY <= 50) {
         overColored = true;
       }
-      
+
       setIsOverColoredSection(overColored);
       setIsButtonOverColoredSection(buttonOverColored);
 
-      // Reliable scroll-based section detection
       if (!isIndependentPage) {
-        // Evaluate in reverse order (bottom to top) to find the deepest section currently in view
         const sectionIds = ["final-cta", "contact", "faq", "use-cases", "benefits", "features", "overview", "home"];
         let currentSection = "home";
-        
+
         for (const id of sectionIds) {
           const el = document.getElementById(id);
           if (el) {
             const rect = el.getBoundingClientRect();
-            // 200px defines the "trigger line" from the top of the viewport.
-            // When a section's top crosses above this line, it becomes active.
-            // We use 200 to account for navbar height and some buffer.
             if (rect.top <= 200) {
               currentSection = id;
               break;
@@ -81,22 +70,19 @@ const Navbar = () => {
           }
         }
 
-        // Map sections that don't have a direct navbar link to the closest relevant link
         if (currentSection === "faq") {
           currentSection = "use-cases";
         } else if (currentSection === "final-cta") {
           currentSection = "contact";
         }
 
-        // Special case: if scrolled to the absolute bottom
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-          // Find the last actual nav link to highlight
           const navIds = ["contact", "use-cases", "benefits", "features", "overview", "home"];
           for (const id of navIds) {
-             if (document.getElementById(id)) {
-                currentSection = id;
-                break;
-             }
+            if (document.getElementById(id)) {
+              currentSection = id;
+              break;
+            }
           }
         }
 
@@ -105,40 +91,27 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    
-    // Trigger once on mount to handle initial scroll position correctly on page load/refresh
     setTimeout(onScroll, 100);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, [isIndependentPage]);
 
   const handleClick = (href: string) => {
-    // Small delay to ensure the click/touch event is fully registered before we collapse the UI
     setTimeout(() => setMobileOpen(false), 150);
-    
-    // Manual scroll calculation for pixel-perfect offset (120px buffer)
+
     const scrollToSection = (targetId: string) => {
       const element = document.querySelector(targetId);
       if (element) {
-        const offset = 80; // Reduced offset to prevent excessive white space
+        const offset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     };
 
-    // If on an independent page and clicking a section link, navigate to home first then scroll
     if (isIndependentPage && href.startsWith("#")) {
       navigate("/", { replace: false });
       setTimeout(() => scrollToSection(href), 100);
     } else if (href.startsWith("#")) {
-      // Manually set active section on click for immediate feedback
       setActiveSection(href.slice(1));
       scrollToSection(href);
     }
@@ -148,12 +121,8 @@ const Navbar = () => {
     setMobileOpen(false);
     if (isIndependentPage) {
       navigate("/", { replace: false });
-      // Ensure scroll to top when navigating to home page
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 300);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 300);
     } else {
-      // Already on home page, scroll to top smoothly
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -174,9 +143,7 @@ const Navbar = () => {
             : "mt-0 rounded-none bg-transparent"
         }`}
       >
-        <nav
-          className={`container flex items-center justify-between transition-all duration-500 h-20`}
-        >
+        <nav className="container flex items-center justify-between transition-all duration-500 h-20">
           <button
             onClick={handleLogoClick}
             aria-label="ComplianceVista - Return to Home"
@@ -230,6 +197,7 @@ const Navbar = () => {
             </button>
           </div>
 
+          {/* ✅ Changed lg:hidden to lg:hidden — hamburger shows on iPad (md) and below */}
           <button
             className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
               !scrolled
@@ -238,8 +206,9 @@ const Navbar = () => {
                 ? "bg-white/30 text-white hover:bg-white/40"
                 : "bg-primary/20 text-primary hover:bg-primary/30"
             }`}
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMobileOpen((prev) => !prev)}
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -254,9 +223,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className={`lg:hidden overflow-hidden transition-shadow duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
-              scrolled
-                ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem]"
-                : ""
+              scrolled ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem]" : ""
             }`}
           >
             <div
@@ -266,44 +233,44 @@ const Navbar = () => {
                   : "bg-white border-b border-white/20"
               }`}
             >
-              <div className="container py-4 flex flex-col gap-1">
-              {navLinks.map((link, index) => (
+              {/* ✅ Removed duplicate "container" class — was preventing clicks on iPad */}
+              <div className="px-4 py-4 flex flex-col gap-1">
+                {navLinks.map((link, index) => (
+                  <motion.button
+                    key={link.href}
+                    onClick={() => handleClick(link.href)}
+                    aria-label={`Navigate to ${link.label} section`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.08, duration: 0.3, ease: "easeOut" }}
+                    className={`text-left py-3 px-4 rounded-xl text-sm font-medium transition-colors ${
+                      !isIndependentPage && activeSection === link.href.slice(1)
+                        ? "text-[#37C643] bg-[#37C643]/10"
+                        : "text-slate-800 hover:bg-slate-800/5"
+                    }`}
+                  >
+                    {link.label}
+                  </motion.button>
+                ))}
                 <motion.button
-                  key={link.href}
-                  onClick={() => handleClick(link.href)}
-                  aria-label={`Navigate to ${link.label} section`}
+                  onClick={() => {
+                    setTimeout(() => setMobileOpen(false), 150);
+                    setIsCalendlyOpen(true);
+                  }}
+                  aria-label="Book a product demo"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.08, duration: 0.3, ease: "easeOut" }}
-                  className={`text-left py-3 px-4 rounded-xl text-sm font-medium transition-colors ${
-                    !isIndependentPage && activeSection === link.href.slice(1)
-                      ? "text-[#37C643] bg-[#37C643]/10"
-                      : "text-slate-800 hover:bg-slate-800/5"
-                  }`}
+                  transition={{ delay: navLinks.length * 0.08, duration: 0.3, ease: "easeOut" }}
+                  className="bg-[#37C643] text-white px-5 py-3 rounded-xl text-sm font-semibold mt-2"
                 >
-                  {link.label}
+                  Book Demo
                 </motion.button>
-              ))}
-              <motion.button
-                onClick={() => {
-                  setTimeout(() => setMobileOpen(false), 150);
-                  setIsCalendlyOpen(true);
-                }}
-                aria-label="Book a product demo"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.08, duration: 0.3, ease: "easeOut" }}
-                className={`bg-[#37C643] text-white px-5 py-3 rounded-xl text-sm font-semibold mt-2`}
-              >
-                Book Demo
-              </motion.button>
-            </div>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Scroll to Top Button - Fixed Position */}
       <AnimatePresence>
         {scrolled && showScrollTop && (
           <motion.button

@@ -7,23 +7,16 @@ interface CalendlyModalProps {
   onClose: () => void;
 }
 
-// IMPORTANT: Update this with your actual Calendly URL
-// Format: https://calendly.com/your-username or https://calendly.com/your-username/meeting-type
 const CALENDLY_URL = "https://calendly.com/d/zzy-699-f8v/book-a-demo";
 
 const CalendlyModal = ({ isOpen, onClose }: CalendlyModalProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
-      setIsLoading(true);
-      // Simulate loading time
-      const timer = setTimeout(() => setIsLoading(false), 1000);
-      // Hide body scrollbar when modal opens
+      setIsLoaded(false);
       document.body.style.overflow = "hidden";
-      return () => clearTimeout(timer);
     } else {
-      // Restore body scrollbar when modal closes
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
@@ -36,48 +29,50 @@ const CalendlyModal = ({ isOpen, onClose }: CalendlyModalProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/50 backdrop-blur-none sm:backdrop-blur-sm z-[100] flex items-center justify-center p-4 lg:p-12"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-[1060px] h-[700px] max-h-full relative flex items-center justify-center pointer-events-auto"
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-[110] p-2 rounded-full bg-black/80 text-white hover:bg-black transition-colors"
+            aria-label="Close modal"
           >
-            {/* Close Button styling matching typical external modal close buttons */}
-            <button
-              onClick={onClose}
-              className="absolute -top-10 right-0 z-20 p-2 rounded-full text-white hover:bg-white/20 transition-colors"
-              aria-label="Close modal"
-            >
-              <X className="w-8 h-8" />
-            </button>
+            <X className="w-6 h-6" />
+          </button>
 
-            {/* Loading State */}
-            {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center z-0">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4" />
-                </div>
-              </div>
-            )}
-
-            {/* Scrollable Calendar Container */}
-            <div className="w-full h-full overflow-y-auto bg-white rounded-2xl shadow-lg" style={{ WebkitOverflowScrolling: "touch" }}>
-              <iframe
-                src={`${CALENDLY_URL}?embed_domain=${window.location.hostname}&embed_type=Inline`}
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                title="Schedule a demo"
-                allowFullScreen
-                scrolling="yes"
-                style={{ display: "block", minHeight: "580px" }}
-              />
+          {/* Spinner — only shown while iframe is loading, transparent bg */}
+          {!isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white" />
             </div>
-          </motion.div>
+          )}
+
+          {/* Iframe — scrollable internally on small screens */}
+          <motion.iframe
+            src={`${CALENDLY_URL}?embed_domain=${window.location.hostname}&embed_type=Inline`}
+            width="100%"
+            frameBorder="0"
+            title="Schedule a demo"
+            scrolling="yes"
+            onClick={(e) => e.stopPropagation()}
+            onLoad={() => setIsLoaded(true)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              maxWidth: "1100px",
+              height: "750px",
+              border: "none",
+              outline: "none",
+              boxShadow: "none",
+              borderRadius: "0",
+              background: "transparent",
+              margin: "0 16px",
+              overflowY: "auto",
+              WebkitOverflowScrolling: "touch",
+            }}
+          />
         </motion.div>
       )}
     </AnimatePresence>

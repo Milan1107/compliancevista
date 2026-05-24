@@ -110,7 +110,7 @@ const HeroSection = () => {
                 {/* Background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl scale-110" />
 
-                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[26rem] xl:max-w-[30rem] h-64 sm:h-72 md:h-80 xl:h-96 rounded-3xl glass-strong shadow-2xl shadow-primary/20 border border-white/30 float-animation">
+                <div className="relative w-full max-w-[20rem] sm:max-w-[22rem] md:max-w-[26rem] xl:max-w-[30rem] h-64 sm:h-72 md:h-80 xl:h-96 rounded-3xl overflow-hidden glass-strong shadow-2xl shadow-primary/20 border border-white/30 float-animation">
                   <img
                     src="/company-images/cv-hero-new.webp"
                     alt="ComplianceVista Enterprise Dashboard - Unified compliance management and audit automation platform for Salesforce"

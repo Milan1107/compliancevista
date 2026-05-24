@@ -40,10 +40,11 @@ const Navbar = () => {
 
       if (finalCtaElement) {
         const finalCtaRect = finalCtaElement.getBoundingClientRect();
-        if (finalCtaRect.top < 100 && finalCtaRect.bottom > 0) {
+        // Keep it true all the way down through the footer since both are dark
+        if (finalCtaRect.top < 100) {
           overColored = true;
         }
-        if (finalCtaRect.top < window.innerHeight - 24 && finalCtaRect.bottom > window.innerHeight - 72) {
+        if (finalCtaRect.top < window.innerHeight - 24) {
           buttonOverColored = true;
         }
       }

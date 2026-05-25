@@ -51,6 +51,66 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
+// --- reCAPTCHA Verification (Backend Validation) ---
+$recaptcha_token = isset($data['recaptcha_token']) ? trim($data['recaptcha_token']) : null;
+$recaptcha_secret = getenv('RECAPTCHA_SECRET_KEY') ?: '';
+
+if (!$recaptcha_token) {
+    http_response_code(400);
+    echo json_encode(["status" => "error", "message" => "reCAPTCHA token is missing."]);
+    exit();
+}
+
+if (empty($recaptcha_secret)) {
+    // Log warning but allow submission if secret is not configured
+    error_log("WARNING: RECAPTCHA_SECRET_KEY not configured in environment variables");
+} else {
+    // Verify token with Google reCAPTCHA API
+    $verify_url = "https://www.google.com/recaptcha/api/siteverify";
+    $verify_data = http_build_query([
+        'secret' => $recaptcha_secret,
+        'response' => $recaptcha_token
+    ]);
+
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'content' => $verify_data,
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'timeout' => 10
+        ]
+    ]);
+
+    $response = @file_get_contents($verify_url, false, $context);
+    
+    if ($response === false) {
+        http_response_code(503);
+        echo json_encode(["status" => "error", "message" => "reCAPTCHA verification service temporarily unavailable. Please try again."]);
+        exit();
+    }
+
+    $result = json_decode($response, true);
+
+    // reCAPTCHA v3 returns: success (bool), score (0.0-1.0), action, challenge_ts, hostname
+    if (!isset($result['success']) || !$result['success']) {
+        http_response_code(403);
+        echo json_encode(["status" => "error", "message" => "reCAPTCHA verification failed. Please try again."]);
+        exit();
+    }
+
+    // Check reCAPTCHA score (v3: 1.0 = definitely bot, 0.0 = definitely human)
+    // Threshold: 0.5 means anything below 0.5 is likely a bot
+    $recaptcha_score = isset($result['score']) ? (float)$result['score'] : 0;
+    if ($recaptcha_score < 0.5) {
+        http_response_code(403);
+        echo json_encode(["status" => "error", "message" => "reCAPTCHA score too low. You appear to be a bot. Please try again."]);
+        exit();
+    }
+
+    // Log successful verification
+    error_log("reCAPTCHA verification successful - Score: {$recaptcha_score}, Action: " . ($result['action'] ?? 'unknown'));
+}
+
 // --- SMTP Temp Credentials ---
 // Using the provided temp credentials directly to make sure Vercel deployed version works immediately without you manually setting env vars yet.
 $smtpUser = getenv('SMTP_USER') ?: 'zeon6080@gmail.com';

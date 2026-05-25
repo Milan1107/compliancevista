@@ -1,6 +1,19 @@
 import { useState, useCallback } from 'react';
 
-const RECAPTCHA_SITE_KEY = "6LdpZq4sAAAAACc87ym0oRUjKpiJ5nIsi_LWPxTh";
+// Declare grecaptcha on window type to avoid TypeScript errors
+declare global {
+  interface Window {
+    grecaptcha: {
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      render: (elementId: string, options: unknown) => void;
+      reset: () => void;
+      getResponse: () => string;
+    };
+  }
+}
+
+// Get reCAPTCHA Site Key from environment variable (public key, safe to expose)
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LdpZq4sAAAAACc87ym0oRUjKpiJ5nIsi_LWPxTh";
 
 export const useRecaptcha = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,7 +42,7 @@ export const useRecaptcha = () => {
       return null;
     }
     try {
-      return await (window as unknown as { grecaptcha: { execute: (siteKey: string, options: { action: string }) => Promise<string> } }).grecaptcha.execute(RECAPTCHA_SITE_KEY, { action });
+      return await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action });
     } catch (e) {
       console.error("reCAPTCHA execution failed", e);
       return null;

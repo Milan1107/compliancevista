@@ -47,18 +47,10 @@ const BenefitsSection = () => {
   ];
 
   const cardClass = (idx: number) =>
-    `card-hover-primary relative rounded-2xl p-6 md:p-8 overflow-hidden bg-white flex flex-col ${
-      idx === 1
-        ? 'border-2 border-[#37C643]/20 shadow-lg shadow-[#37C643]/5'
-        : 'border border-slate-200'
-    }`;
+    `card-hover-primary relative rounded-2xl p-6 md:p-8 overflow-hidden bg-white flex flex-col border border-slate-200`;
 
   const iconClass = (idx: number) =>
-    `card-icon w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform relative z-10 transform-none ${
-      idx === 1
-        ? 'bg-[#37C643]/15 border border-[#37C643]/30'
-        : 'bg-[#37C643]/10 border border-[#37C643]/20'
-    }`;
+    `card-icon w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform relative z-10 transform-none bg-[#37C643]/10 border border-[#37C643]/20`;
 
   const renderCard = (benefit: typeof benefits[0], idx: number) => (
     <motion.div

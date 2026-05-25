@@ -140,19 +140,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex"
-          >
-            <div className="w-8 h-12 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="w-1.5 h-1.5 rounded-full bg-primary"
-              />
-            </div>
-          </motion.div>
         </div>
       </div>
 

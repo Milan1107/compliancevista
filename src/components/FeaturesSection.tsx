@@ -114,7 +114,7 @@ const FeaturesSection = () => {
 
 				<div className="max-w-6xl mx-auto">
 					{/* Explicit wrapper height to mathematically prevent any layout shifting during frame updates */}
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10 items-stretch h-[536px] sm:h-[544px] md:h-[280px] lg:h-[260px] xl:h-[240px]">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10 items-stretch h-[536px] sm:h-[544px] md:h-[280px] lg:h-[260px] xl:h-[240px] overflow-hidden">
 						{visibleFeatures.map((feature, idx) => (
 							<motion.div
 								key={activeIndex + idx}

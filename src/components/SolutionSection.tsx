@@ -83,7 +83,7 @@ const SolutionSection = () => {
 
         {/* Explicit wrapper height prevents layout collapse during exit animations */}
         <div 
-          className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto h-[584px] sm:h-[536px] md:h-[600px] lg:h-[320px]"
+          className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto h-[584px] sm:h-[536px] md:h-[600px] lg:h-[320px] overflow-hidden"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

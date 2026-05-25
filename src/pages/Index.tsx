@@ -1,0 +1,97 @@
+import { Suspense, lazy } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import FooterSection from "@/components/FooterSection";
+
+// Lazy load below-the-fold sections for better performance
+const ProblemSection = lazy(() => 
+  import("@/components/ProblemSection").catch(err => {
+    console.error("Failed to load ProblemSection:", err);
+    throw err;
+  })
+);
+const SolutionSection = lazy(() => 
+  import("@/components/SolutionSection").catch(err => {
+    console.error("Failed to load SolutionSection:", err);
+    throw err;
+  })
+);
+const FeaturesSection = lazy(() => 
+  import("@/components/FeaturesSection").catch(err => {
+    console.error("Failed to load FeaturesSection:", err);
+    throw err;
+  })
+);
+const BenefitsSection = lazy(() => 
+  import("@/components/BenefitsSection").catch(err => {
+    console.error("Failed to load BenefitsSection:", err);
+    throw err;
+  })
+);
+const UseCasesSection = lazy(() => 
+  import("@/components/UseCasesSection").catch(err => {
+    console.error("Failed to load UseCasesSection:", err);
+    throw err;
+  })
+);
+const FAQSection = lazy(() => 
+  import("@/components/FAQSection").catch(err => {
+    console.error("Failed to load FAQSection:", err);
+    throw err;
+  })
+);
+const ContactSection = lazy(() => 
+  import("@/components/ContactSection").catch(err => {
+    console.error("Failed to load ContactSection:", err);
+    throw err;
+  })
+);
+const FinalCTASection = lazy(() => 
+  import("@/components/FinalCTASection").catch(err => {
+    console.error("Failed to load FinalCTASection:", err);
+    throw err;
+  })
+);
+
+// Loading fallback component
+const SectionSkeleton = () => (
+  <div className="min-h-[400px] bg-gradient-to-b from-background to-background/50 animate-pulse" />
+);
+
+const Index = () => {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <Suspense fallback={<SectionSkeleton />}>
+          <ProblemSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <SolutionSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <FeaturesSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <BenefitsSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <UseCasesSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <FAQSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <ContactSection />
+        </Suspense>
+        <Suspense fallback={<SectionSkeleton />}>
+          <FinalCTASection />
+        </Suspense>
+      </main>
+      <FooterSection />
+    </>
+  );
+};
+
+export default Index;

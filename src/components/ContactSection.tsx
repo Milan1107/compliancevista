@@ -7,25 +7,111 @@ import { useRecaptcha } from "../hooks/useRecaptcha";
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { loadRecaptcha, executeRecaptcha } = useRecaptcha();
- 
-  const validate = () => {
+
+  // Validation rules for each field
+  const validateField = (name: string, value: string): string => {
+    const trimmedValue = value.trim();
+    
+    switch (name) {
+      case "name":
+        if (!trimmedValue) return "Name is required";
+        if (trimmedValue.length < 2) return "Name must be at least 2 characters";
+        if (trimmedValue.length > 50) return "Name must not exceed 50 characters";
+        if (!/^[a-zA-Z\s'-]+$/.test(trimmedValue)) return "Name can only contain letters, spaces, hyphens, and apostrophes";
+        return "";
+      
+      case "email":
+        if (!trimmedValue) return "Email is required";
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmedValue)) return "Please enter a valid email address";
+        if (trimmedValue.length > 100) return "Email is too long";
+        return "";
+      
+      case "phone": {
+        const phoneDigits = value.replace(/[^\d]/g, "");
+        if (!phoneDigits) return "Phone number is required";
+        if (phoneDigits.length < 7) return "Phone number must be at least 7 digits";
+        if (phoneDigits.length > 15) return "Phone number must not exceed 15 digits";
+        if (!/^\d+$/.test(phoneDigits)) return "Phone number can only contain digits";
+        return "";
+      }
+      
+      case "message":
+        if (trimmedValue.length > 1000) return "Message must not exceed 1000 characters";
+        return "";
+      
+      default:
+        return "";
+    }
+  };
+
+  // Field order for progressive validation
+  const fieldOrder = ["name", "email", "phone", "message"];
+
+  // Get the index of a field in the order
+  const getFieldIndex = (fieldName: string) => fieldOrder.indexOf(fieldName);
+
+  // Real-time validation on blur (when clicking outside)
+  const handleBlur = (name: string) => {
+    const newTouched = { ...touched, [name]: true };
+    setTouched(newTouched);
+    
+    // On blur, validate current field and all fields above it (only show errors for touched fields)
+    validateUpToField(name, newTouched);
+  };
+
+  // Validate up to and including the given field (progressive validation)
+  const validateUpToField = (fieldName: string, touchedState: Record<string, boolean>) => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) { e.name = "Name is required"; }
-    else if (form.name.trim().length < 2) { e.name = "Name must be at least 2 characters"; }
-    if (!form.email.trim()) { e.email = "Email is required"; }
-    else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(form.email)) { e.email = "Please enter a valid email address"; }
-    if (!form.phone.trim()) { e.phone = "Phone number is required"; }
-    else if (!/^\d{7,15}$/.test(form.phone)) { e.phone = "Please enter a valid phone number (7–15 digits)"; }
+    const currentIndex = getFieldIndex(fieldName);
+    
+    // Validate only fields up to and including the current field
+    fieldOrder.forEach((key, index) => {
+      if (index <= currentIndex) {
+        const error = validateField(key, form[key as keyof typeof form]);
+        if (error) {
+          e[key] = error;
+        }
+      }
+    });
+    
     setErrors(e);
-    return Object.keys(e).length === 0;
+  };
+
+  // Validate all fields and return all errors (for submit)
+  const validateAllFields = () => {
+    const e: Record<string, string> = {};
+    
+    // Always validate all fields on submit
+    Object.keys(form).forEach((key) => {
+      const error = validateField(key, form[key as keyof typeof form]);
+      if (error) {
+        e[key] = error;
+      }
+    });
+    
+    setErrors(e);
+    return e;
   };
  
   const handleSubmit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-    if (!validate()) return;
+    // Mark all fields as touched to show all errors
+    const allTouched = Object.keys(form).reduce((acc, key) => {
+      acc[key] = true;
+      return acc;
+    }, {} as Record<string, boolean>);
+    setTouched(allTouched);
+    
+    // Validate all fields
+    const validationErrors = validateAllFields();
+    
+    // If there are errors, don't submit
+    if (Object.keys(validationErrors).length > 0) return;
+    
     setIsSubmitting(true);
     try {
       const token = await executeRecaptcha("contact_form");
@@ -49,7 +135,7 @@ const ContactSection = () => {
  
   const inputClass = (name: string) =>
     `w-full px-4 py-2.5 rounded-md border transition-colors text-sm focus:outline-none focus:ring-2 disabled:opacity-50 ${
-      errors[name]
+      touched[name] && errors[name]
         ? "border-red-500 bg-red-50 focus:ring-red-500/30 focus:border-red-500"
         : "border-slate-200 bg-white focus:ring-[#37C643]/30 focus:border-[#37C643]"
     } text-slate-900`;
@@ -230,33 +316,43 @@ const ContactSection = () => {
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Name<span className="text-red-500">*</span></label>
                     <input type="text" disabled={isSubmitting} value={form.name} onFocus={loadRecaptcha}
-                      onChange={(e) => { setForm({ ...form, name: e.target.value }); if (errors.name) setErrors({ ...errors, name: "" }); }}
+                      onChange={(e) => { setForm({ ...form, name: e.target.value }); if (touched.name) validateUpToField("name", touched); }}
+                      onBlur={() => handleBlur("name")}
                       className={inputClass("name")} placeholder="Enter your name" />
-                    {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><span>✕</span>{errors.name}</p>}
                   </div>
  
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Email<span className="text-red-500">*</span></label>
                     <input type="email" disabled={isSubmitting} value={form.email} onFocus={loadRecaptcha}
-                      onChange={(e) => { setForm({ ...form, email: e.target.value }); if (errors.email) setErrors({ ...errors, email: "" }); }}
+                      onChange={(e) => { setForm({ ...form, email: e.target.value }); if (touched.email) validateUpToField("email", touched); }}
+                      onBlur={() => handleBlur("email")}
                       className={inputClass("email")} placeholder="Enter your email" />
-                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><span>✕</span>{errors.email}</p>}
                   </div>
  
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Phone<span className="text-red-500">*</span></label>
                     <input type="tel" disabled={isSubmitting} value={form.phone} onFocus={loadRecaptcha}
-                      onChange={(e) => { const n = e.target.value.replace(/[^\d]/g, ""); setForm({ ...form, phone: n }); if (errors.phone) setErrors({ ...errors, phone: "" }); }}
+                      onChange={(e) => { const n = e.target.value.replace(/[^\d]/g, ""); setForm({ ...form, phone: n }); if (touched.phone) validateUpToField("phone", touched); }}
+                      onBlur={() => handleBlur("phone")}
                       className={inputClass("phone")} placeholder="Enter your phone number" />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+                    {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><span>✕</span>{errors.phone}</p>}
                   </div>
  
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
                     <textarea rows={5} disabled={isSubmitting} value={form.message} onFocus={loadRecaptcha}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#37C643]/30 focus:border-[#37C643] transition-colors resize-none disabled:opacity-50"
+                      onChange={(e) => { setForm({ ...form, message: e.target.value }); if (touched.message) validateUpToField("message", touched); }}
+                      onBlur={() => handleBlur("message")}
+                      className={`w-full px-4 py-2.5 rounded-md border transition-colors text-sm focus:outline-none focus:ring-2 resize-none disabled:opacity-50 ${
+                        errors.message
+                          ? "border-red-500 bg-red-50 focus:ring-red-500/30 focus:border-red-500"
+                          : "border-slate-200 bg-white focus:ring-[#37C643]/30 focus:border-[#37C643]"
+                      } text-slate-900`}
                       placeholder="Let's talk! Tell us about yourself." />
+                    {errors.message && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><span>✕</span>{errors.message}</p>}
+                    <p className="text-xs text-slate-400 mt-1">{form.message.length}/1000 characters</p>
                   </div>
  
                   <button type="submit" disabled={isSubmitting}

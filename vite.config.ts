@@ -22,13 +22,23 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Vendor chunks
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          "vendor-framer": ["framer-motion"],
-          "vendor-ui": ["@radix-ui/react-accordion", "@radix-ui/react-dialog", "@radix-ui/react-slot"],
-          "vendor-form": ["@hookform/resolvers", "react-hook-form", "zod"],
-          "vendor-charts": ["recharts"],
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'vendor-framer';
+          }
+          if (id.includes('node_modules/@radix-ui')) {
+            return 'vendor-ui';
+          }
+          if (id.includes('node_modules/@hookform') || id.includes('node_modules/react-hook-form') || id.includes('node_modules/zod')) {
+            return 'vendor-form';
+          }
+          if (id.includes('node_modules/recharts')) {
+            return 'vendor-charts';
+          }
         },
       },
     },

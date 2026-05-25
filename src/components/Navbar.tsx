@@ -39,21 +39,27 @@ const Navbar = () => {
       let overColored = false;
       let buttonOverColored = false;
 
-      // Define the physical space occupied by the Navbar and the Button
-      const navbarBottom = 80; // Navbar is ~80px tall
-      const buttonTop = window.innerHeight - 72;
-      const buttonBottom = window.innerHeight - 24;
+      // Define the physical absolute space occupied by the Navbar and the Button
+      const navbarAbsoluteBottom = window.scrollY + 80; // Navbar bottom edge
+      const buttonAbsoluteTop = window.scrollY + window.innerHeight - 72;
+      const buttonAbsoluteBottom = window.scrollY + window.innerHeight - 24;
 
       if (finalCtaElement) {
         const ctaRect = finalCtaElement.getBoundingClientRect();
-        if (ctaRect.top < navbarBottom && ctaRect.bottom > 0) overColored = true;
-        if (ctaRect.top < buttonBottom && ctaRect.bottom > buttonTop) buttonOverColored = true;
+        const ctaAbsoluteTop = window.scrollY + ctaRect.top;
+        const ctaAbsoluteBottom = window.scrollY + ctaRect.bottom;
+        
+        if (ctaAbsoluteTop < navbarAbsoluteBottom && ctaAbsoluteBottom > window.scrollY) overColored = true;
+        if (ctaAbsoluteTop < buttonAbsoluteBottom && ctaAbsoluteBottom > buttonAbsoluteTop) buttonOverColored = true;
       }
 
       if (footerElement) {
         const footerRect = footerElement.getBoundingClientRect();
-        if (footerRect.top < navbarBottom && footerRect.bottom > 0) overColored = true;
-        if (footerRect.top < buttonBottom && footerRect.bottom > buttonTop) buttonOverColored = true;
+        const footerAbsoluteTop = window.scrollY + footerRect.top;
+        const footerAbsoluteBottom = window.scrollY + footerRect.bottom;
+
+        if (footerAbsoluteTop < navbarAbsoluteBottom && footerAbsoluteBottom > window.scrollY) overColored = true;
+        if (footerAbsoluteTop < buttonAbsoluteBottom && footerAbsoluteBottom > buttonAbsoluteTop) buttonOverColored = true;
       }
 
       if (!overColored && heroElement && window.scrollY <= 50) {
